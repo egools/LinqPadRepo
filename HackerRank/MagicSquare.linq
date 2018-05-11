@@ -6,7 +6,7 @@ void Main()
 	{
 		new int[]{4,8,2},
 		new int[]{4,5,7},
-		new int[]{6,1,6}
+		new int[]{6,1,2}
 	};
 	
 	var sq = new MagicSquare(s);
@@ -40,6 +40,19 @@ public class MagicSquare
 	public void Solve()
 	{		
 		_moves += Math.Abs(5 - _square[1][1]);
+		
+		var cand1s = new List<int[]> { new[]{0,1}, new[]{1,2}, new[]{2,1}, new[]{1,0}};
+		var ones = Find(1);
+		var one = cand1s.FirstOrDefault(p => _square[p[0]][p[1]] == 1);
+		
+		if(ones.Count() == 0 || one == null)
+		{		
+			one = cand1s.Aggregate((l, r) => _square[l[0]][l[1]] < _square[r[0]][r[1]] ? l : r);
+			_square[one[0]][one[1]] = 1;
+		}
+		
+		
+		
 		Console.WriteLine(_moves);
 	}
 	
