@@ -3,10 +3,10 @@
 </Query>
 
 var input = new List<int> { 1, 9, 2, 1, 3 };
-var tasks = new List<Task>();
 var output = new List<int>();
 
-input.ForEach(n => 
+var tasks = new List<Task>();
+foreach(int n in input)
 {
 	Task t = new Task(() =>
 	{
@@ -15,7 +15,7 @@ input.ForEach(n =>
 	});
 	t.Start();
 	tasks.Add(t);
-});
+}
 
 Task.WaitAll(tasks.ToArray());
 output.Dump();
