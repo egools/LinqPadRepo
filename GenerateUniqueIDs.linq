@@ -1,29 +1,21 @@
 <Query Kind="Statements" />
 
-var fileLoc = @"C:\Users\egoolsby\Documents\UB_CardholderIDs.csv";
-var numIDs = 10000;
-var preList = new List<string>();
+var numIDs = 133952;
+var idList = new List<string>();
 
-for(int i = 0; i < numIDs; i++)
+while(idList.Count < numIDs)
 {
-	var a = Guid.NewGuid().ToString().GetHashCode().ToString("x"); 
+	var tempID = "RO18" + Guid.NewGuid().ToString().GetHashCode().ToString("x").Substring(0, 6); 	
 	try
 	{
-		preList.Add("C" + a.Substring(0, 5));
+		if(!idList.Contains(tempID))
+			idList.Add(tempID);
 	}
 	catch
 	{
-		string output = "error: " + a;
-		output.Dump();
+		("error: " + tempID).Dump();
 	}
 }
 
-var dupes = preList.GroupBy(id => id).Where(id => id.Count() > 1).ToList();
-var finalList = preList.Distinct().ToList();
-finalList.Count().Dump();
-finalList.Dump();
-
-var csv = new StringBuilder();
-
-finalList.ForEach(id => csv.AppendLine(id));
-File.WriteAllText(fileLoc, csv.ToString());
+idList.Count().Dump();
+idList.Dump();
