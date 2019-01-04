@@ -2,7 +2,7 @@
 
 void Main()
 {
-	System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\egoolsby\Documents\LINQPad Queries\LinqPadRepo\HackerRank\DNATestCase0.txt");
+	System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\egoolsby\Documents\LINQPad Queries\LinqPadRepo\HackerRank\DNATestCase1.txt");
 	int n = Convert.ToInt32(file.ReadLine());
 
 	string[] genes = file.ReadLine().Split(' ');
@@ -40,7 +40,7 @@ void Main()
 		if(score < min)
 			min = score;
 			
-		score.Dump();
+		//score.Dump();
 		//End Custom
 	}
 	
@@ -93,10 +93,12 @@ public class Node
 	public int FindScore(string gene, int minIndex, int maxIndex)
 	{
 		var returnVal = 0;
+		
 		if(gene.Length > 0 && SubNodes.ContainsKey(gene[0]) && SubNodes[gene[0]].ValidIndeces.Any(i => i >= minIndex && i <= maxIndex))
-			returnVal = Scores.Sum() + SubNodes[gene[0]].FindScore(gene.Substring(1, gene.Length - 1), minIndex, maxIndex);
-		else if(TerminalIndeces.Any(i => i >= minIndex && i <= maxIndex))
-			returnVal = Scores.Sum();
+			returnVal += SubNodes[gene[0]].FindScore(gene.Substring(1, gene.Length - 1), minIndex, maxIndex);
+		
+		if(TerminalIndeces.Any(i => i >= minIndex && i <= maxIndex))
+			returnVal += Scores.Sum();
 			
 		return returnVal;
 	}
