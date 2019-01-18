@@ -20,13 +20,13 @@ static string[] cavityMap(string[] grid) {
     {
         for(int j = 1; j < grid[i].Length - 1; j++)
         {
-			var thisVal = grid[i][j];
-			var isCavity = true;
-			
-			if(Int(thisVal) <= Int(grid[i-1][j])) isCavity = false;
-			if(Int(thisVal) <= Int(grid[i][j-1])) isCavity = false;
-			if(Int(thisVal) <= Int(grid[i + 1][j])) isCavity = false;
-			if(Int(thisVal) <= Int(grid[i][j + 1])) isCavity = false;
+            var thisVal = Int(grid[i][j]);
+            var isCavity = true;
+
+            if(thisVal <= Int(grid[i-1][j])) isCavity = false;
+            if(thisVal <= Int(grid[i][j-1])) isCavity = false;
+            if(thisVal <= Int(grid[i + 1][j])) isCavity = false;
+            if(thisVal <= Int(grid[i][j + 1])) isCavity = false;
 				
 			if(isCavity)
 				grid[i] = grid[i].Remove(j, 1).Insert(j, "X");

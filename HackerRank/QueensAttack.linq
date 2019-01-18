@@ -23,7 +23,7 @@ void Main()
 
 	//n.Dump(); k.Dump(); r_q.Dump(); c_q.Dump(); obstacles.Dump();
     int result = queensAttack(n, k, r_q, c_q, obstacles);
-	//result.Dump();
+	result.Dump();
 	
 	//PrintBoard(n, r_q, c_q, obstacles);
 	
@@ -32,13 +32,16 @@ void Main()
 // Define other methods and classes here
     public static int queensAttack(int n, int k, int r_q, int c_q, int[][] obstacles) 
 	{
-		var spaces = 0;
-		
-		Action<int, int, int, int, Func<int[], bool>> CountSpaces = (obIndex, q_locaction, minDistance, maxDistance, pred) =>
+		var spaces = 0;		
+		Action<int, int, int, int, Func<int[], bool>> CountSpaces = (obIndex, q_locaction, minDistance, maxDistance, predicate) =>
 		{		
-			//ob index is to handle vertical vs horizontal 
+			//ob index: handles vertical vs horizontal (0 vertical, 1 horizontal)
+			//q_location: row or cal index of queen
+			//minDistance: # spaces between queen and top/left boundry 
+			//maxDistance: # spaces between queen and bottom/right boundry
+			//predicate: function to find the obstacles between queen and boundry
 			var obs = (from o in obstacles
-				where pred(o)
+				where predicate(o)
 				select o[obIndex]).Distinct().ToList();
 				
 			obs.Add(q_locaction);
@@ -55,21 +58,12 @@ void Main()
 				spaces += maxDistance;
 			else 
 				spaces += obs[q_index + 1] - obs[q_index] - 1;
-				
-			spaces.Dump();
 		};
 		
-		//vertical			
-		CountSpaces(0, r_q, r_q - 1, n - r_q, (int[] o) => o[1] == c_q);
-
-		//horizontal
-		CountSpaces(1, c_q,  c_q - 1, n - c_q, (int[] o) => o[0] == r_q);
-		
-		//diag rising
-		CountSpaces(1, c_q, Math.Min(r_q - 1, c_q - 1), Math.Min(n - r_q, n - c_q), (int[] o) => o[0] == o[1] + r_q - c_q);
-			
-		//diag falling
-		CountSpaces(1, c_q, Math.Min(n - r_q, c_q - 1), Math.Min(r_q - 1, n - c_q), (int[] o) => o[0] == -o[1] + r_q + c_q);
+		CountSpaces(0, r_q, r_q - 1, n - r_q, (int[] o) => o[1] == c_q); //vertical			
+		CountSpaces(1, c_q,  c_q - 1, n - c_q, (int[] o) => o[0] == r_q); //horizontal
+		CountSpaces(1, c_q, Math.Min(r_q - 1, c_q - 1), Math.Min(n - r_q, n - c_q), (int[] o) => o[0] == o[1] + r_q - c_q); //diag rising
+		CountSpaces(1, c_q, Math.Min(n - r_q, c_q - 1), Math.Min(r_q - 1, n - c_q), (int[] o) => o[0] == -o[1] + r_q + c_q); //diag falling
 		
 		return spaces;
     }
