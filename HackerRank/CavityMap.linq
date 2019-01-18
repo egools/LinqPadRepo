@@ -15,7 +15,6 @@ void Main()
 
 // Define other methods and classes here
 static string[] cavityMap(string[] grid) {
-    // Complete this function
 	Func<char, int> Int = (c) => { return c == 'X' ? 999 : (int)Char.GetNumericValue(c);};
     for(int i = 1; i < grid.Length - 1; i++)
     {
@@ -35,4 +34,3 @@ static string[] cavityMap(string[] grid) {
     }
 	return grid;
 }
-

@@ -12,7 +12,7 @@ void Main()
 	
 	//Custom Code		
 	var tree = new AhoTree(genes, health);
-	
+	//tree.Dump();
 	long min = int.MaxValue;
 	long max = 0;
 	//End Custom
@@ -26,7 +26,7 @@ void Main()
 		
 		//Custom Code		
 		long score = 0;
-		tree.Score(d, first, last);
+		//tree.Score(d, first, last);
 		
 		if(score > max)
 			max = score;
@@ -46,10 +46,17 @@ void Main()
 public class AhoTree
 {	
 	private readonly Node _root = new Node();
+	public Node Root 
+	{ 
+		get { return _root; } 
+	}
 	
-	public AhoTree(string[] sequences, int[] health)
+	public AhoTree(string[] genes, int[] health)
 	{
-		
+		for(int i = 0; i < genes.Length; i++)
+		{
+			Root.Add(genes[i], health[i], i);
+		}
 	}
 	
 	public int Score(string text, int start, int end)
@@ -60,7 +67,15 @@ public class AhoTree
 	
 	private void BuildFails()
 	{
+		var nodeQ = new Queue<Node>();
+		nodeQ.Enqueue(_root);
 		
+		while(nodeQ.Count > 0)
+		{
+			var node = nodeQ.Dequeue();
+			
+			
+		}
 	}
 }
 
@@ -70,6 +85,7 @@ public class Node
 	public Dictionary<char, Node> Children;
 	public Dictionary<int, int> Scores;
 	public Node Parent;
+	public Node Fail;
 	public Node this[char c]
 	{
 		get { return Children.ContainsKey(c) ? Children[c] : null; }
@@ -89,15 +105,22 @@ public class Node
 		Scores = new Dictionary<int, int>();
 	}
 	
-	public void BuildGenes(string gene, int score, int validIndex)
-	{		
-		var c = gene[0];
-		this[c] = this[c] ?? new Node(c, this);
-		
-		if(gene.Length > 1)
-			this[c].BuildGenes(gene.Substring(1, gene.Length - 1), score, validIndex);
+	public void Add(string gene, int score, int index)
+	{
+		if(gene.Length > 0)
+		{
+			var c = gene[0];
+			if(this[c] == null)
+			{
+				this[c] = new Node(c, this);
+			}			
+			
+			this[c].Add(gene.Substring(1, gene.Length - 1), score, index);
+		}
 		else
-			this[c].Scores.Add(validIndex, score);
+		{
+			Scores.Add(index, score);
+		}
 	}
 	
 	public int FindScore(string gene, int mindex, int maxdex)
