@@ -2,7 +2,7 @@
   <Namespace>System.Threading.Tasks</Namespace>
 </Query>
 
-var input = new List<int> { 1, 9, 2, 1, 3 };
+var input = new List<int> { 1, 9, 2, 14, 3 };
 var output = new List<int>();
 
 var tasks = new List<Task>();
