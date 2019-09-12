@@ -9,16 +9,19 @@ void Main()
 		105600,96000,92400,88800,85200,81600,78000,74400,70800,67800,64800,61800,58800,56400,54000,51600,49200,46800,44400,42000,39600,37200,34800,32880,31200,30240
 	};
 	
-	var expected = new double[winnings.Count,odds.Count];
-	
+	var expectedGrid = new double[odds.Count, winnings.Count];
+	var expectedTotal = new double[odds.Count];
+		
 	for(int o = 0; o < odds.Count; o++)
 	{
 		for(int w = 0; w < winnings.Count; w++)
 		{
-			var chance = 1f / (odds[o] + 1);
-			expected[w,o] = Math.Round((winnings[w] / 1000f) * odds[o] * chance);
+			var expected = Math.Round((winnings[w] / 1000f) * odds[o]);// * (1f / (odds[o] + 1)));
+			expectedGrid[o,w] = expected;
+			expectedTotal[o] += expected;			
 		}
 	}
 	
-	expected.Dump();
+	expectedGrid.Dump();
+	expectedTotal.Dump();
 }
