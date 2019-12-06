@@ -8,13 +8,13 @@ void Main()
 		new Quota("Gender", new Dictionary<string, int> { {"1", 1837}, { "2", 1913 }}),
 		new Quota("Age", new Dictionary<string, int> {{"1", 1350}, { "2", 1613 }, {"3", 787}}),
 		new Quota("Region", new Dictionary<string, int> {{"1", 713}, { "2",  825}, {"3", 1350}, { "4", 862 }}),
-		new Quota("AAResp", new Dictionary<string, int> {{"1", 488}, { "2", 3262 }}),
+		new Quota("Ethnicity", new Dictionary<string, int> {{"1", 750}, { "2", 750 }, { "3", 750 }, { "4", 750 }, { "5", 750 }}),
 		new Quota("CFACustomer", new Dictionary<string, int> {{"1", 1500}, { "2", int.MaxValue }})
 	};
 	var version = new Quota("IRTVersion", new Dictionary<string, int> { {"1", 375},{"2", 375},{"3", 375},{"4", 375},{"5", 375},{"6", 375},{"7", 375},{"8", 375},{"9", 375},{"10", 375}});
 	var versions = new Dictionary<string, int>();
 	Random rand = new Random();
-	for(int i = 1; i <= 5000; i++)
+	for(int i = 1; i <= 3000; i++)
 	{
 		var r = new Resp();
 		var isOpen = true;
@@ -41,19 +41,34 @@ void Main()
 					Count = resps.Count(resp => resp.Quotas["Gender"] == r.Quotas["Gender"] &&
 						resp.Quotas["Age"] == r.Quotas["Age"] &&
 						resp.Quotas["Region"] == r.Quotas["Region"] &&
-						resp.Quotas["AAResp"] == r.Quotas["AAResp"] &&
+						resp.Quotas["Ethnicity"] == r.Quotas["Ethnicity"] &&
 						resp.Quotas["CFACustomer"] == r.Quotas["CFACustomer"] && resp.Quotas["IRTVersion"] == o), 
 				});
 				
-			v.OrderBy(ver => ver.Count);
+			v = v.OrderBy(ver => ver.Count).ThenBy(ver => rand.Next());
 			r.Quotas.Add("IRTVersion", v.First().Key);
 			version[v.First().Key].Completes++;
 				
 			resps.Add(r);
 		}
 	}
-	quotas.Dump();
-	resps.Where(r => r.Quotas["IRTVersion"] == "1").Dump();
+	
+	version.Dump();
+	
+	for(int i = 1; i <= 10; i++)
+	{
+		var sub = resps.Where(r => r.Quotas["IRTVersion"] == i.ToString());
+		$@"IRTVersion={i} : {sub.Count()}".Dump();
+		foreach(var q in quotas)
+		{
+			foreach(var qv in q.QuotaValues)
+			{
+				$"{q.Name}={qv.Value} : {sub.Count(r => r.Quotas[q.Name] == qv.Value)}".Dump();
+			}
+		}
+		Console.WriteLine();
+		
+	}
 }
 public class Resp
 {
