@@ -6,6 +6,6 @@ Action<int> addFields = delegate (int i)
 	fields.Add($"Q245_{i}", ""); 
 	fields.Add($"Q250_{i}", ""); 
 };
-Enumerable.Range(1, 43).ToList().ForEach(i => addFields(i));
+Enumerable.Range(1, 43).ToList().ForEach(addFields);
 
 fields.Dump();

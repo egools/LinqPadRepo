@@ -3,21 +3,23 @@
 void Main()
 {
 	
+	
 }
 public class Resp
 {
-	public List<Quota> Quotas;
+	public Dictionary<string, string> Quotas;
 }
 
 public class Quota
 {
 	public string Name;
-	public List<QuotaValue> Values;
+	public List<QuotaValue> QuotaValues;
+	public QuotaValue this[string val] => QuotaValues.FirstOrDefault(v => v.Value == val);
 }
 
 public class QuotaValue
 {
-	public int Value;
+	public string Value;
 	public int Max;
 	public int Completes;
 	public bool IsOpen => Completes < Max;
