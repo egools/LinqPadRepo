@@ -1,0 +1,468 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <base href="http://localhost:64513/" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Question</title>
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/favicon-20x20.png" rel="icon" type="image/png" sizes="20x20" />
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/min/mediaupload.min.css" rel="stylesheet" />
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/min/pc.css" rel="stylesheet" />
+    <link href="/Content/overrides.css" rel="stylesheet"/>
+<link href="/Content/overridesPC.css" rel="stylesheet"/>
+
+
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/modernizr.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/jquery.min.js"></script>
+    
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/mediaupload.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/js/air-datepicker/air-datepicker.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/utilities.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/global.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+        var JSResources = {"Q300_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","Q300_BadMessageMissingOther":"You must enter a response in the Specify box.<br />You will find the questions with errors below.","Q300B_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","Q300B_BadMessageMissingOther":"You must enter a response in the Specify box.<br />You will find the questions with errors below."};
+        
+    </script>
+
+    <!--BeginMasterHeadPCCode -->
+    <!--EndMasterHeadPCCode -->
+    <script src="/Scripts/overrides.js"></script>
+<script src="/Scripts/overridesPC.js"></script>
+
+    
+    <!-- BeginTaggedPageHeadCode -->
+    <!-- EndTaggedPageHeadCode -->
+
+</head>
+<body>
+    <header>
+        <div class="header-grid">
+            <h1 class="sr-only">CarlosTest_DontDelete</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-grid">
+            <div class="survey__page">
+
+                
+
+<form action="/q300/PagePost" class="" method="post" name="q300" novalidate="novalidate">
+
+
+
+<div class="question__list" role="list">
+    
+        <!-- Begin HTML For Q300 -->
+    <section class="question__list-item" role="listitem" data-name="Q300" st-name="Q300" st-surveyquestiontype="Ranking" st-surveyquestiondisplaytype="DEFAULT" data-exclusiveresponses="true">
+        <h2 id="Q300QuestionText"
+            role="heading"
+            ondblclick="">
+            Default Ranking Question
+            <br><span role="doc-subtitle"></span>
+        </h2>
+
+        <div class="response-group">
+            
+            <div class="statement multiple">
+                        <div class="statement-title">
+                            Banana
+                        </div>
+                        <fieldset>
+                            <select id="Q300_1"
+                                    name="Q300_1"
+                                    aria-label="Q300_1"
+                                    makeresponsesexclusive="true">
+                                <option value="">Select One</option>
+                                        <option value="1" 
+                                                nameindex="1"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 1
+                                        </option>
+                                        <option value="2" 
+                                                nameindex="2"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 2
+                                        </option>
+                                        <option value="3" 
+                                                nameindex="3"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 3
+                                        </option>
+                            </select>
+                        </fieldset>
+                        <div class="statement-title">
+                            Apple
+                        </div>
+                        <fieldset>
+                            <select id="Q300_2"
+                                    name="Q300_2"
+                                    aria-label="Q300_2"
+                                    makeresponsesexclusive="true">
+                                <option value="">Select One</option>
+                                        <option value="1" 
+                                                nameindex="1"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 1
+                                        </option>
+                                        <option value="2" 
+                                                nameindex="2"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 2
+                                        </option>
+                                        <option value="3" 
+                                                nameindex="3"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 3
+                                        </option>
+                            </select>
+                        </fieldset>
+                        <div class="statement-title">
+                            Tortiilla
+                        </div>
+                        <fieldset>
+                            <select id="Q300_3"
+                                    name="Q300_3"
+                                    aria-label="Q300_3"
+                                    makeresponsesexclusive="true">
+                                <option value="">Select One</option>
+                                        <option value="1" 
+                                                nameindex="1"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 1
+                                        </option>
+                                        <option value="2" 
+                                                nameindex="2"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 2
+                                        </option>
+                                        <option value="3" 
+                                                nameindex="3"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 3
+                                        </option>
+                            </select>
+                        </fieldset>
+                        <div class="statement-title">
+                            Sushi
+                        </div>
+                        <fieldset>
+                            <select id="Q300_4"
+                                    name="Q300_4"
+                                    aria-label="Q300_4"
+                                    makeresponsesexclusive="true">
+                                <option value="">Select One</option>
+                                        <option value="1" 
+                                                nameindex="1"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 1
+                                        </option>
+                                        <option value="2" 
+                                                nameindex="2"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 2
+                                        </option>
+                                        <option value="3" 
+                                                nameindex="3"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 3
+                                        </option>
+                            </select>
+                        </fieldset>
+                        <div class="statement-title">
+                            Gumbo
+                        </div>
+                        <fieldset>
+                            <select id="Q300_5"
+                                    name="Q300_5"
+                                    aria-label="Q300_5"
+                                    makeresponsesexclusive="true">
+                                <option value="">Select One</option>
+                                        <option value="1" 
+                                                nameindex="1"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 1
+                                        </option>
+                                        <option value="2" 
+                                                nameindex="2"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 2
+                                        </option>
+                                        <option value="3" 
+                                                nameindex="3"
+                                                st-eligibilitytype="NotSet"
+                                                st-value=""
+                                                st-notvalue="">
+                                            Rank 3
+                                        </option>
+                            </select>
+                        </fieldset>
+            </div>
+        </div>
+    </section>
+    <!-- End HTML For Q300 -->
+    <!-- Begin HTML For Q300B -->
+    <section class="question__list-item" role="listitem" data-name="Q300B" st-name="Q300B" st-surveyquestiontype="Ranking" st-surveyquestiondisplaytype="CARDSORT" data-exclusiveresponses="true">
+        <h2 id="Q300BQuestionText"
+            role="heading"
+            ondblclick="">
+            Default Ranking Question
+            <br><span role="doc-subtitle"></span>
+        </h2>
+
+        <div class="response-group">
+            
+            <div class="ranked-cardsort">
+                <div class="card-container">
+
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="1" data-input-id="Q300B_1">
+                                <legend class="sr-only">Banana</legend>
+                                <div class="card-text">
+                                    Banana
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_1"
+                                   name="Q300B_1"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="2" data-input-id="Q300B_2">
+                                <legend class="sr-only">Apple</legend>
+                                <div class="card-text">
+                                    Apple
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_2"
+                                   name="Q300B_2"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="3" data-input-id="Q300B_3">
+                                <legend class="sr-only">Tortiilla</legend>
+                                <div class="card-text">
+                                    Tortiilla
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_3"
+                                   name="Q300B_3"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="4" data-input-id="Q300B_4">
+                                <legend class="sr-only">Sushi</legend>
+                                <div class="card-text">
+                                    Sushi
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_4"
+                                   name="Q300B_4"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="5" data-input-id="Q300B_5">
+                                <legend class="sr-only">Gumbo</legend>
+                                <div class="card-text">
+                                    Gumbo
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_5"
+                                   name="Q300B_5"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="6" data-input-id="Q300B_6">
+                                <legend class="sr-only">Cookies</legend>
+                                <div class="card-text">
+                                    Cookies
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_6"
+                                   name="Q300B_6"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="7" data-input-id="Q300B_7">
+                                <legend class="sr-only">Mapo Tofu</legend>
+                                <div class="card-text">
+                                    Mapo Tofu
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_7"
+                                   name="Q300B_7"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="8" data-input-id="Q300B_8">
+                                <legend class="sr-only">Fried Chicken</legend>
+                                <div class="card-text">
+                                    Fried Chicken
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_8"
+                                   name="Q300B_8"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="9" data-input-id="Q300B_9">
+                                <legend class="sr-only">Casserole</legend>
+                                <div class="card-text">
+                                    Casserole
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_9"
+                                   name="Q300B_9"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                            <fieldset class="rankable-card draggable-card" role="button" tabindex="0" aria-label="add" data-statement-index="10" data-input-id="Q300B_10">
+                                <legend class="sr-only">Chop Salad</legend>
+                                <div class="card-text">
+                                    Chop Salad
+                                </div>
+                            </fieldset>
+                            <input type="hidden"
+                                   id="Q300B_10"
+                                   name="Q300B_10"
+                                   value=""
+                                   class="rank-input"
+                                   st-value="1,2,3">
+                </div>
+                <div class="rank-slot-container">
+
+                        <div class="rank-response">
+                            <div class="rank-value">1</div>
+                            <div class="drop-slot rank-text" data-rank="1">Rank 1</div>
+                            <div class="dropped-card draggable-card drop-slot" role="button" tabindex="0" aria-label="remove" data-rank="1" data-input-value="1">
+                                <div class="card-text"></div>
+                            </div>
+                        </div>
+                        <div class="rank-response">
+                            <div class="rank-value">2</div>
+                            <div class="drop-slot rank-text" data-rank="2">Rank 2</div>
+                            <div class="dropped-card draggable-card drop-slot" role="button" tabindex="0" aria-label="remove" data-rank="2" data-input-value="2">
+                                <div class="card-text"></div>
+                            </div>
+                        </div>
+                        <div class="rank-response">
+                            <div class="rank-value">3</div>
+                            <div class="drop-slot rank-text" data-rank="3">Rank 3</div>
+                            <div class="dropped-card draggable-card drop-slot" role="button" tabindex="0" aria-label="remove" data-rank="3" data-input-value="3">
+                                <div class="card-text"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End HTML For Q300B -->
+
+</div>
+
+
+        <div class="question__button-container">
+            
+            <button id="btnNext"
+                    class="button next"
+                    style=""
+                    type="submit">
+                Next 
+                <span class="arrow"></span>
+            </button>
+        </div>
+</form>            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/logo.svg"
+                 width="320"
+                 height="52"
+                 alt="Footer Logo of Gongos"
+                 title="Gongos">
+        </div>
+        <div class="footer-grid">
+            <nav class="footer__menu">
+                <a href="https://www.google.com/terms" role="link" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+                <a href="https://gongos.com/privacy-policy/" role="link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                <a href="https://www.google.com/about" role="link" target="_blank" rel="noopener noreferrer">About us</a>
+                <a href="https://www.google.com/support" role="link" target="_blank" rel="noopener noreferrer">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    
+    
+        <script type="text/javascript">
+        if (typeof dtrum != "undefined")
+        {
+            dtrum.identifyUser('InstinctBetaSurveyTracking:oysn:12007:0:10000091');
+        }
+    </script>
+
+    
+    
+
+    
+    <script type="text/javascript">
+        utilities.rankedCardSort.init();
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

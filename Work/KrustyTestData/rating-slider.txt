@@ -1,0 +1,781 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <base href="http://localhost:64513/" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Question</title>
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/favicon-20x20.png" rel="icon" type="image/png" sizes="20x20" />
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/min/mediaupload.min.css" rel="stylesheet" />
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/min/pc.css" rel="stylesheet" />
+    <link href="/Content/overrides.css" rel="stylesheet"/>
+<link href="/Content/overridesPC.css" rel="stylesheet"/>
+
+
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/modernizr.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/jquery.min.js"></script>
+    
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/mediaupload.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/js/air-datepicker/air-datepicker.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/utilities.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/global.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+        var JSResources = {"RatingSlider_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","RatingSlider_BadMessageMissingOther":"You must enter a response in the Specify box.<br />You will find the questions with errors below.","RatingSlider_BadMessageOtherSpecifyError":"Your answer in the textbox will be cleared.","RatingSliderB_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","RatingSliderB_BadMessageMissingOther":"You must enter a response in the Specify box.<br />You will find the questions with errors below."};
+        
+    </script>
+
+    <!--BeginMasterHeadPCCode -->
+    <!--EndMasterHeadPCCode -->
+    <script src="/Scripts/overrides.js"></script>
+<script src="/Scripts/overridesPC.js"></script>
+
+    
+    <!-- BeginTaggedPageHeadCode -->
+    
+    <!-- EndTaggedPageHeadCode -->
+
+</head>
+<body>
+    <header>
+        <div class="header-grid">
+            <h1 class="sr-only">CarlosTest_DontDelete</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-grid">
+            <div class="survey__page">
+
+                
+
+<form action="/ratingslider/PagePost" class="" method="post" name="ratingslider" novalidate="novalidate">
+
+
+
+<div class="question__list" role="list">
+    
+    		<!-- Begin HTML For RatingSlider -->
+		<section class="question__list-item" role="listitem" data-name="RatingSlider" st-name="RatingSlider" st-surveyquestiontype="CheckOne" st-surveyquestiondisplaytype="RATINGSLIDER">
+		    <h2 id="RatingSliderQuestionText"
+		        role="heading"
+		        ondblclick="">
+		        Rate it
+		        <br><span role="doc-subtitle"></span>
+		    </h2>
+		
+		    <div class="response-groups">
+		        
+		        <div class="slider-rating group_with_button">
+		                <button type="button" class="slider-start">
+		                    <span class="arrow-wrapper">
+		                        <span class="arrow">
+		                            <span class="sr-only">Start</span>
+		                        </span>
+		                    </span>
+		                </button>
+		            
+		            <fieldset class="form-range__group legend-above"
+		                      data-grouptype="response"
+		                      data-groupname="RatingSlider">
+		                <legend class="sr-only">Slider</legend>
+		                <div class="form-range__group-labels" style="width: calc(114.285714285714% - 2rem);margin-left:calc(-7.14285714285714% + 1rem);">
+		                        <div>
+		                            Response One
+		                        </div>
+		                        <div>
+		                            Response Two
+		                        </div>
+		                        <div>
+		                            Response Three
+		                        </div>
+		                        <div>
+		                            Response Four
+		                        </div>
+		                        <div>
+		                            Response Five
+		                        </div>
+		                        <div>
+		                            Response Six
+		                        </div>
+		                        <div>
+		                            Response Seven long longer longerest
+		                        </div>
+		                        <div>
+		                            Response Eight
+		                        </div>
+		                </div>
+		                <div class="form-range__group-wrapper">
+		                    <div id="rangeBackground" class="form-range__group-line">
+		                    </div>
+		                    <label for="RatingSlider" class="sr-only">Slider</label>
+		                    <input type="hidden" id="RatingSlider" name="RatingSlider" class="form-range__hidden-input" value="" st-eligibilitytype="Ineligible" />
+		                    <input type="range"
+		                           id="RatingSliderSlider"
+		                           name="RatingSliderSlider"
+		                           class="form-range__group-input slider-unselected"
+		                           data-initial-position="OffScale"
+		                           value="1"
+		                           min="1"
+		                           max="8"
+		                           data-ticksid="RatingSliderTicks" />
+		                    <div class="form-range__group-ticks" id="RatingSliderTicks">
+
+		                            <div class="form-range__tick"
+		                                 data-response-index="1"
+		                                 data-response-value="1"
+		                                 st-eligibilitytype="Ineligible">
+		                            </div>
+		                            <div class="form-range__tick"
+		                                 data-response-index="2"
+		                                 data-response-value="2"
+		                                 st-eligibilitytype="NotSet">
+		                            </div>
+		                            <div class="form-range__tick"
+		                                 data-response-index="3"
+		                                 data-response-value="3"
+		                                 st-eligibilitytype="NotSet">
+		                            </div>
+		                            <div class="form-range__tick"
+		                                 data-response-index="4"
+		                                 data-response-value="4"
+		                                 st-eligibilitytype="NotSet">
+		                            </div>
+		                            <div class="form-range__tick"
+		                                 data-response-index="5"
+		                                 data-response-value="5"
+		                                 st-eligibilitytype="NotSet">
+		                            </div>
+		                            <div class="form-range__tick"
+		                                 data-response-index="6"
+		                                 data-response-value="6"
+		                                 st-eligibilitytype="NotSet">
+		                            </div>
+		                            <div class="form-range__tick"
+		                                 data-response-index="7"
+		                                 data-response-value="7"
+		                                 st-eligibilitytype="NotSet">
+		                            </div>
+		                            <div class="form-range__tick"
+		                                 data-response-index="8"
+		                                 data-response-value="8"
+		                                 st-eligibilitytype="NotSet">
+		                            </div>
+		                    </div>
+		                </div>
+		                <div class="form-checkbox-button__group">
+		                </div>
+		            </fieldset>
+		        </div>
+		    </div>
+		</section>
+		<!-- End HTML For RatingSlider -->
+		<!-- Begin HTML For RatingSliderB -->
+		<section class="question__list-item" role="listitem" data-name="RatingSliderB" st-name="RatingSliderB" st-surveyquestiontype="GridCheckOne" st-surveyquestiondisplaytype="RATINGSLIDER">
+		    <h2 id="RatingSliderBQuestionText"
+		        role="heading"
+		        ondblclick="">
+		        Rate Some More
+		        <br><span role="doc-subtitle"></span>
+		    </h2>
+		
+		    <div class="response-group statement">
+		        
+		        <div class="statement-slider-rating">
+		                    <div class="sub-title" role="doc-subtitle">
+		                        Statement 1
+		                    </div>
+		                    <div class="slider-rating group_with_button">
+		                            <button type="button" class="slider-start">
+		                                <span class="arrow-wrapper">
+		                                    <span class="arrow">
+		                                        <span class="sr-only">Start</span>
+		                                    </span>
+		                                </span>
+		                            </button>
+		                        
+		                        <fieldset class="form-range__group legend-below"
+		                                  data-grouptype="statement"
+		                                  data-groupname="RatingSliderB_1">
+		                            <legend class="sr-only">Slider</legend>
+		                            <div class="form-range__group-labels" style="width: calc(114.285714285714% - 2rem);margin-left:calc(-7.14285714285714% + 1rem);">
+		                                    <div>
+		                                        Response 1
+		                                    </div>
+		                                    <div>
+		                                        Response 2
+		                                    </div>
+		                                    <div>
+		                                        Response 3
+		                                    </div>
+		                                    <div>
+		                                        Response 4
+		                                    </div>
+		                                    <div>
+		                                        Response 5
+		                                    </div>
+		                                    <div>
+		                                        Response 6
+		                                    </div>
+		                                    <div>
+		                                        Response 7
+		                                    </div>
+		                                    <div>
+		                                        Response 8
+		                                    </div>
+		                            </div>
+		                            <div class="form-range__group-wrapper">
+		                                <div id="rangeBackground" class="form-range__group-line">
+		                                </div>
+		                                <label for="RatingSliderB_1" class="sr-only">Slider</label>
+		                                <input type="hidden" id="RatingSliderB_1" name="RatingSliderB_1" class="form-range__hidden-input" value="" st-eligibilitytype="Ineligible" />
+		                                <input type="range"
+		                                       id="RatingSliderB_1Slider"
+		                                       name="RatingSliderB_1Slider"
+		                                       class="form-range__group-input slider-unselected"
+		                                       data-initial-position="OffScale"
+		                                       value="1"
+		                                       min="1"
+		                                       max="8"
+		                                       data-ticksid="RatingSliderB_1Ticks" />
+		                                <div class="form-range__group-ticks" id="RatingSliderB_1Ticks">
+
+		                                        <div class="form-range__tick"
+		                                             data-response-index="1"
+		                                             data-response-value="1"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="2"
+		                                             data-response-value="2"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="3"
+		                                             data-response-value="3"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="4"
+		                                             data-response-value="4"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="5"
+		                                             data-response-value="5"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="6"
+		                                             data-response-value="6"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="7"
+		                                             data-response-value="7"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="8"
+		                                             data-response-value="8"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                </div>
+		                            </div>
+		                            <div class="form-checkbox-button__group">
+		                            </div>
+		                        </fieldset>
+		                    </div>
+		                    <div class="sub-title" role="doc-subtitle">
+		                        Statement 2
+		                    </div>
+		                    <div class="slider-rating group_with_button">
+		                            <button type="button" class="slider-start">
+		                                <span class="arrow-wrapper">
+		                                    <span class="arrow">
+		                                        <span class="sr-only">Start</span>
+		                                    </span>
+		                                </span>
+		                            </button>
+		                        
+		                        <fieldset class="form-range__group legend-below"
+		                                  data-grouptype="statement"
+		                                  data-groupname="RatingSliderB_2">
+		                            <legend class="sr-only">Slider</legend>
+		                            <div class="form-range__group-labels" style="width: calc(114.285714285714% - 2rem);margin-left:calc(-7.14285714285714% + 1rem);">
+		                                    <div>
+		                                        Response 1
+		                                    </div>
+		                                    <div>
+		                                        Response 2
+		                                    </div>
+		                                    <div>
+		                                        Response 3
+		                                    </div>
+		                                    <div>
+		                                        Response 4
+		                                    </div>
+		                                    <div>
+		                                        Response 5
+		                                    </div>
+		                                    <div>
+		                                        Response 6
+		                                    </div>
+		                                    <div>
+		                                        Response 7
+		                                    </div>
+		                                    <div>
+		                                        Response 8
+		                                    </div>
+		                            </div>
+		                            <div class="form-range__group-wrapper">
+		                                <div id="rangeBackground" class="form-range__group-line">
+		                                </div>
+		                                <label for="RatingSliderB_2" class="sr-only">Slider</label>
+		                                <input type="hidden" id="RatingSliderB_2" name="RatingSliderB_2" class="form-range__hidden-input" value="" st-eligibilitytype="Ineligible" />
+		                                <input type="range"
+		                                       id="RatingSliderB_2Slider"
+		                                       name="RatingSliderB_2Slider"
+		                                       class="form-range__group-input slider-unselected"
+		                                       data-initial-position="OffScale"
+		                                       value="1"
+		                                       min="1"
+		                                       max="8"
+		                                       data-ticksid="RatingSliderB_2Ticks" />
+		                                <div class="form-range__group-ticks" id="RatingSliderB_2Ticks">
+
+		                                        <div class="form-range__tick"
+		                                             data-response-index="1"
+		                                             data-response-value="1"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="2"
+		                                             data-response-value="2"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="3"
+		                                             data-response-value="3"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="4"
+		                                             data-response-value="4"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="5"
+		                                             data-response-value="5"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="6"
+		                                             data-response-value="6"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="7"
+		                                             data-response-value="7"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="8"
+		                                             data-response-value="8"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                </div>
+		                            </div>
+		                            <div class="form-checkbox-button__group">
+		                            </div>
+		                        </fieldset>
+		                    </div>
+		                    <div class="sub-title" role="doc-subtitle">
+		                        Statement 3
+		                    </div>
+		                    <div class="slider-rating group_with_button">
+		                            <button type="button" class="slider-start">
+		                                <span class="arrow-wrapper">
+		                                    <span class="arrow">
+		                                        <span class="sr-only">Start</span>
+		                                    </span>
+		                                </span>
+		                            </button>
+		                        
+		                        <fieldset class="form-range__group legend-below"
+		                                  data-grouptype="statement"
+		                                  data-groupname="RatingSliderB_3">
+		                            <legend class="sr-only">Slider</legend>
+		                            <div class="form-range__group-labels" style="width: calc(114.285714285714% - 2rem);margin-left:calc(-7.14285714285714% + 1rem);">
+		                                    <div>
+		                                        Response 1
+		                                    </div>
+		                                    <div>
+		                                        Response 2
+		                                    </div>
+		                                    <div>
+		                                        Response 3
+		                                    </div>
+		                                    <div>
+		                                        Response 4
+		                                    </div>
+		                                    <div>
+		                                        Response 5
+		                                    </div>
+		                                    <div>
+		                                        Response 6
+		                                    </div>
+		                                    <div>
+		                                        Response 7
+		                                    </div>
+		                                    <div>
+		                                        Response 8
+		                                    </div>
+		                            </div>
+		                            <div class="form-range__group-wrapper">
+		                                <div id="rangeBackground" class="form-range__group-line">
+		                                </div>
+		                                <label for="RatingSliderB_3" class="sr-only">Slider</label>
+		                                <input type="hidden" id="RatingSliderB_3" name="RatingSliderB_3" class="form-range__hidden-input" value="" st-eligibilitytype="Ineligible" />
+		                                <input type="range"
+		                                       id="RatingSliderB_3Slider"
+		                                       name="RatingSliderB_3Slider"
+		                                       class="form-range__group-input slider-unselected"
+		                                       data-initial-position="OffScale"
+		                                       value="1"
+		                                       min="1"
+		                                       max="8"
+		                                       data-ticksid="RatingSliderB_3Ticks" />
+		                                <div class="form-range__group-ticks" id="RatingSliderB_3Ticks">
+
+		                                        <div class="form-range__tick"
+		                                             data-response-index="1"
+		                                             data-response-value="1"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="2"
+		                                             data-response-value="2"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="3"
+		                                             data-response-value="3"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="4"
+		                                             data-response-value="4"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="5"
+		                                             data-response-value="5"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="6"
+		                                             data-response-value="6"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="7"
+		                                             data-response-value="7"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="8"
+		                                             data-response-value="8"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                </div>
+		                            </div>
+		                            <div class="form-checkbox-button__group">
+		                            </div>
+		                        </fieldset>
+		                    </div>
+		                    <div class="sub-title" role="doc-subtitle">
+		                        Statement 4
+		                    </div>
+		                    <div class="slider-rating group_with_button">
+		                            <button type="button" class="slider-start">
+		                                <span class="arrow-wrapper">
+		                                    <span class="arrow">
+		                                        <span class="sr-only">Start</span>
+		                                    </span>
+		                                </span>
+		                            </button>
+		                        
+		                        <fieldset class="form-range__group legend-below"
+		                                  data-grouptype="statement"
+		                                  data-groupname="RatingSliderB_4">
+		                            <legend class="sr-only">Slider</legend>
+		                            <div class="form-range__group-labels" style="width: calc(114.285714285714% - 2rem);margin-left:calc(-7.14285714285714% + 1rem);">
+		                                    <div>
+		                                        Response 1
+		                                    </div>
+		                                    <div>
+		                                        Response 2
+		                                    </div>
+		                                    <div>
+		                                        Response 3
+		                                    </div>
+		                                    <div>
+		                                        Response 4
+		                                    </div>
+		                                    <div>
+		                                        Response 5
+		                                    </div>
+		                                    <div>
+		                                        Response 6
+		                                    </div>
+		                                    <div>
+		                                        Response 7
+		                                    </div>
+		                                    <div>
+		                                        Response 8
+		                                    </div>
+		                            </div>
+		                            <div class="form-range__group-wrapper">
+		                                <div id="rangeBackground" class="form-range__group-line">
+		                                </div>
+		                                <label for="RatingSliderB_4" class="sr-only">Slider</label>
+		                                <input type="hidden" id="RatingSliderB_4" name="RatingSliderB_4" class="form-range__hidden-input" value="" st-eligibilitytype="Ineligible" />
+		                                <input type="range"
+		                                       id="RatingSliderB_4Slider"
+		                                       name="RatingSliderB_4Slider"
+		                                       class="form-range__group-input slider-unselected"
+		                                       data-initial-position="OffScale"
+		                                       value="1"
+		                                       min="1"
+		                                       max="8"
+		                                       data-ticksid="RatingSliderB_4Ticks" />
+		                                <div class="form-range__group-ticks" id="RatingSliderB_4Ticks">
+
+		                                        <div class="form-range__tick"
+		                                             data-response-index="1"
+		                                             data-response-value="1"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="2"
+		                                             data-response-value="2"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="3"
+		                                             data-response-value="3"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="4"
+		                                             data-response-value="4"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="5"
+		                                             data-response-value="5"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="6"
+		                                             data-response-value="6"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="7"
+		                                             data-response-value="7"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="8"
+		                                             data-response-value="8"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                </div>
+		                            </div>
+		                            <div class="form-checkbox-button__group">
+		                            </div>
+		                        </fieldset>
+		                    </div>
+		                    <div class="sub-title" role="doc-subtitle">
+		                        Statement 5
+		                    </div>
+		                    <div class="slider-rating group_with_button">
+		                            <button type="button" class="slider-start">
+		                                <span class="arrow-wrapper">
+		                                    <span class="arrow">
+		                                        <span class="sr-only">Start</span>
+		                                    </span>
+		                                </span>
+		                            </button>
+		                        
+		                        <fieldset class="form-range__group legend-below"
+		                                  data-grouptype="statement"
+		                                  data-groupname="RatingSliderB_5">
+		                            <legend class="sr-only">Slider</legend>
+		                            <div class="form-range__group-labels" style="width: calc(114.285714285714% - 2rem);margin-left:calc(-7.14285714285714% + 1rem);">
+		                                    <div>
+		                                        Response 1
+		                                    </div>
+		                                    <div>
+		                                        Response 2
+		                                    </div>
+		                                    <div>
+		                                        Response 3
+		                                    </div>
+		                                    <div>
+		                                        Response 4
+		                                    </div>
+		                                    <div>
+		                                        Response 5
+		                                    </div>
+		                                    <div>
+		                                        Response 6
+		                                    </div>
+		                                    <div>
+		                                        Response 7
+		                                    </div>
+		                                    <div>
+		                                        Response 8
+		                                    </div>
+		                            </div>
+		                            <div class="form-range__group-wrapper">
+		                                <div id="rangeBackground" class="form-range__group-line">
+		                                </div>
+		                                <label for="RatingSliderB_5" class="sr-only">Slider</label>
+		                                <input type="hidden" id="RatingSliderB_5" name="RatingSliderB_5" class="form-range__hidden-input" value="" st-eligibilitytype="Ineligible" />
+		                                <input type="range"
+		                                       id="RatingSliderB_5Slider"
+		                                       name="RatingSliderB_5Slider"
+		                                       class="form-range__group-input slider-unselected"
+		                                       data-initial-position="OffScale"
+		                                       value="1"
+		                                       min="1"
+		                                       max="8"
+		                                       data-ticksid="RatingSliderB_5Ticks" />
+		                                <div class="form-range__group-ticks" id="RatingSliderB_5Ticks">
+
+		                                        <div class="form-range__tick"
+		                                             data-response-index="1"
+		                                             data-response-value="1"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="2"
+		                                             data-response-value="2"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="3"
+		                                             data-response-value="3"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="4"
+		                                             data-response-value="4"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="5"
+		                                             data-response-value="5"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="6"
+		                                             data-response-value="6"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="7"
+		                                             data-response-value="7"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                        <div class="form-range__tick"
+		                                             data-response-index="8"
+		                                             data-response-value="8"
+		                                             st-eligibilitytype="NotSet">
+		                                        </div>
+		                                </div>
+		                            </div>
+		                            <div class="form-checkbox-button__group">
+		                            </div>
+		                        </fieldset>
+		                    </div>
+		        </div>
+		    </div>
+		</section>
+		<!-- End HTML For RatingSliderB -->
+
+</div>
+
+
+        <div class="question__button-container">
+            
+            <button id="btnNext"
+                    class="button next"
+                    style=""
+                    type="submit">
+                Next 
+                <span class="arrow"></span>
+            </button>
+        </div>
+</form>            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/logo.svg"
+                 width="320"
+                 height="52"
+                 alt="Footer Logo of Gongos"
+                 title="Gongos">
+        </div>
+        <div class="footer-grid">
+            <nav class="footer__menu">
+                <a href="https://www.google.com/terms" role="link" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+                <a href="https://gongos.com/privacy-policy/" role="link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                <a href="https://www.google.com/about" role="link" target="_blank" rel="noopener noreferrer">About us</a>
+                <a href="https://www.google.com/support" role="link" target="_blank" rel="noopener noreferrer">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    
+    
+        <script type="text/javascript">
+        if (typeof dtrum != "undefined")
+        {
+            dtrum.identifyUser('InstinctBetaSurveyTracking:oysn:12007:0:10000204');
+        }
+    </script>
+
+    
+    
+
+    
+    
+						<script type="text/javascript">
+							utilities.pager.init({ name: "RatingSliderB", lastPageIndex: 0  });
+						</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

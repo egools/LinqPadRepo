@@ -1,0 +1,283 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <base href="https://sbeta.gongos.com/oysn/" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Question</title>
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/favicon-20x20.png" rel="icon" type="image/png" sizes="20x20" />
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/min/pc.css" rel="stylesheet" />
+    <link href="/oysn/content/pc?v=" rel="stylesheet"/>
+
+
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/modernizr.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/jquery.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/mediaupload.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/js/air-datepicker/air-datepicker.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/utilities.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/global.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+        var JSResources = {"NumSliderB_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","NumSliderB_BadMessageNonNumeric":"Please enter only positive numbers.<br />You will find the questions with errors below.","NumSliderB_BadMessageOptOutWarning":"Your answer in the textbox will be cleared.","NumSlider_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","NumSlider_BadMessageNonNumeric":"Please enter only positive numbers.<br />You will find the questions with errors below.","NumSlider_BadMessageConstantSum":"Your responses must total -1.","NumSlider_BadMessageMissingOther":"You must enter a response in the Specify box.<br />You will find the questions with errors below."};
+        
+    </script>
+
+    <!--BeginMasterHeadPCCode -->
+    <!--EndMasterHeadPCCode -->
+    <script src="/oysn/js/scriptsPC?v="></script>
+
+    
+    <!-- BeginTaggedPageHeadCode -->
+    
+    <!-- EndTaggedPageHeadCode -->
+
+</head>
+<body>
+    <header>
+        <div class="header-grid">
+            <h1 class="sr-only">CarlosTest_DontDelete</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-grid">
+            <div class="survey__page">
+
+                
+
+<form action="/oysn/numslider/PagePost" class="" method="post" name="numslider" novalidate="novalidate">
+
+
+
+<div class="question__list" role="list">
+    
+    		<!-- Begin HTML For NumSliderB -->
+		<section class="question__list-item" role="listitem" data-name="NumSliderB" st-name="NumSliderB" st-surveyquestiontype="Numeric" st-surveyquestiondisplaytype="RANGESLIDER" st-numericmin="0" st-numericmax="100">
+		    <h2 id="NumSliderBQuestionText"
+		        role="heading"
+		        ondblclick="">
+		        How good?
+		        <br><span role="doc-subtitle"></span>
+		    </h2>
+		    <div class="response-groups">
+		        
+
+		        <fieldset class="form-slider-with-number__group">
+		            <div class="form-slider-with-number">
+		                <span class="form-slider-with-number__output">
+		                    <span></span>
+		                    <output for="NumSliderBSlider"
+		                            id="NumSliderBSliderOutput"
+		                            style="min-width:3rem;">
+		                        0
+		                    </output>
+		                    <span></span>
+		                </span>
+		                <input type="hidden" id="NumSliderB" name="NumSliderB" value="" st-eligibilitytype="Ineligible" />
+		                <input class="form-slider-with-number__range"
+		                       id="NumSliderBSlider"
+		                       name="NumSliderBSlider"
+		                       type="range"
+		                       value="0"
+		                       min="0"
+		                       max="100"
+		                       step="1"
+		                       oninput="utilities.updateSliderVal(this)"
+		                       onchange="utilities.updateSliderVal(this)"
+		                       data-texttype="numeric"
+		                       data-inputid="NumSliderB"
+		                       style="background-size: 0% 100%;"
+		                       aria-label="NumSliderBSlider" />
+		            </div>
+		        </fieldset>
+		    </div>
+		</section>
+		<!-- End HTML For NumSliderB -->
+		<!-- Begin HTML For NumSlider -->
+		<section class="question__list-item" role="listitem" data-name="NumSlider"  st-name="NumSlider" st-surveyquestiontype="GridNumeric" st-surveyquestiondisplaytype="RANGESLIDER" st-numericmin="0" st-numericmax="100">
+		    <h2 id="NumSliderQuestionText"
+		        role="heading"
+		        ondblclick="">
+		        Rate em...
+		        <br><span role="doc-subtitle"></span>
+		    </h2>
+		    <div class="response-groups">
+		        
+		        <div class="statement multiple">
+		                    <fieldset class="form-slider-with-number__group horizontal">
+		                        <div class="statement-title">
+		                            Statement 1
+		                                <input type="text"
+                                           id="NumSlider_1Other"
+                                           name="NumSlider_1Other"
+                                           aria-label="Other"
+                                           value=""
+                                           maxlength="500"
+                                           data-question="NumSlider"
+                                           data-input="NumSlider_1"
+                                           data-required="true"
+                                           st-perc="100" />
+		                        </div>
+		                        <div class="form-slider-with-number">
+		                            <span class="form-slider-with-number__output">
+		                                <span>$</span>
+		                                <output for="NumSlider_1Slider"
+		                                        id="NumSlider_1SliderOutput"
+		                                        style="min-width:3rem;">
+		                                    0
+		                                </output>
+		                                <span>USD</span>
+		                            </span>
+		                            <input type="hidden" id="NumSlider_1" name="NumSlider_1" value="" st-eligibilitytype="Ineligible"/>
+		                            <input class="form-slider-with-number__range"
+		                                   id="NumSlider_1Slider"
+		                                   name="NumSlider_1Slider"
+		                                   type="range"
+		                                   value="0"
+		                                   min="0"
+		                                   max="100"
+		                                   step="1"
+		                                   oninput="utilities.updateSliderVal(this)"
+		                                   onchange="utilities.updateSliderVal(this)"
+		                                   data-texttype="numeric"
+		                                   data-inputid="NumSlider_1"
+		                                   style="background-size: 0% 100%;"
+		                                   aria-label="NumSlider_1Slider"										   
+                                   		   data-otherspecify="NumSlider_1Other"/>
+		                        </div>
+		                    </fieldset>
+		                    <fieldset class="form-slider-with-number__group horizontal">
+		                        <div class="statement-title">
+		                            Statement 2
+		                        </div>
+		                        <div class="form-slider-with-number">
+		                            <span class="form-slider-with-number__output">
+		                                <span>$</span>
+		                                <output for="NumSlider_2Slider"
+		                                        id="NumSlider_2SliderOutput"
+		                                        style="min-width:3rem;">
+		                                    0
+		                                </output>
+		                                <span>USD</span>
+		                            </span>
+		                            <input type="hidden" id="NumSlider_2" name="NumSlider_2" value="" st-eligibilitytype="Ineligible"/>
+		                            <input class="form-slider-with-number__range"
+		                                   id="NumSlider_2Slider"
+		                                   name="NumSlider_2Slider"
+		                                   type="range"
+		                                   value="0"
+		                                   min="0"
+		                                   max="100"
+		                                   step="1"
+		                                   oninput="utilities.updateSliderVal(this)"
+		                                   onchange="utilities.updateSliderVal(this)"
+		                                   data-texttype="numeric"
+		                                   data-inputid="NumSlider_2"
+		                                   style="background-size: 0% 100%;"
+		                                   aria-label="NumSlider_2Slider" />
+		                        </div>
+		                    </fieldset>
+		                    <fieldset class="form-slider-with-number__group horizontal">
+		                        <div class="statement-title">
+		                            Statement 3
+		                        </div>
+		                        <div class="form-slider-with-number">
+		                            <span class="form-slider-with-number__output">
+		                                <span>$</span>
+		                                <output for="NumSlider_3Slider"
+		                                        id="NumSlider_3SliderOutput"
+		                                        style="min-width:3rem;">
+		                                    0
+		                                </output>
+		                                <span>USD</span>
+		                            </span>
+		                            <input type="hidden" id="NumSlider_3" name="NumSlider_3" value="" st-eligibilitytype="Ineligible"/>
+		                            <input class="form-slider-with-number__range"
+		                                   id="NumSlider_3Slider"
+		                                   name="NumSlider_3Slider"
+		                                   type="range"
+		                                   value="0"
+		                                   min="0"
+		                                   max="100"
+		                                   step="1"
+		                                   oninput="utilities.updateSliderVal(this)"
+		                                   onchange="utilities.updateSliderVal(this)"
+		                                   data-texttype="numeric"
+		                                   data-inputid="NumSlider_3"
+		                                   style="background-size: 0% 100%;"
+		                                   aria-label="NumSlider_3Slider" />
+		                        </div>
+		                    </fieldset>
+		        </div>
+		    </div>
+		</section>
+		<!-- End HTML For NumSlider -->
+
+</div>
+
+
+        <div class="question__button-container">
+            
+            <button id="btnNext"
+                    class="button next"
+                    style=""
+                    type="submit">
+                Next 
+                <span class="arrow"></span>
+            </button>
+        </div>
+</form>            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/logo.svg"
+                 width="320"
+                 height="52"
+                 alt="Footer Logo of Gongos"
+                 title="Gongos">
+        </div>
+        <div class="footer-grid">
+            <nav class="footer__menu">
+                <a href="https://www.google.com/terms" role="link" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+                <a href="https://gongos.com/privacy-policy/" role="link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                <a href="https://www.google.com/about" role="link" target="_blank" rel="noopener noreferrer">About us</a>
+                <a href="https://www.google.com/support" role="link" target="_blank" rel="noopener noreferrer">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    
+    
+        <script type="text/javascript">
+        if (typeof dtrum != "undefined")
+        {
+            dtrum.identifyUser('InstinctBetaSurveyTracking:oysn:12007:0:10000272');
+        }
+    </script>
+
+    
+    
+
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="https://s.gongos.com/hwkq/" />
+    <meta charset="utf-8" />
+    <title>Survey Question</title>
+    <link href="https://cdn.gongos.com/Surveys/v1.5/style/images/favicons/favicon-20x20.png" rel="icon" type="image/png" sizes="20x20" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.gongos.com/Surveys/v1.5/min/jquery.min.css" rel="stylesheet" />
+    <link href="https://cdn.gongos.com/Surveys/v1.5/min/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.gongos.com/Surveys/v1.5/min/mediaupload.min.css" rel="stylesheet" />
+    <link href="https://cdn.gongos.com/Surveys/v1.5/min/pc.min.css" rel="stylesheet" />
+    <link href="/hwkq/content/pc?v=" rel="stylesheet"/>
+
+
+    <script src="https://cdn.gongos.com/Surveys/v1.5/min/modernizr.min.js"></script>
+    <script src="https://cdn.gongos.com/Surveys/v1.5/min/jquery.min.js"></script>
+    <script src="https://cdn.gongos.com/Surveys/v1.5/min/bootstrap.min.js"></script>
+    <script src="https://cdn.gongos.com/Surveys/v1.5/min/mediaupload.min.js"></script>
+    <script src="https://cdn.gongos.com/Surveys/v1.5/min/utilities.min.js"></script>
+    <script src="https://cdn.gongos.com/Surveys/v1.5/min/global.min.js"></script>
+                <script type="text/javascript">
+		var JSResources = {"Q301_BadMessageNoAnswer":"All responses are required.<br />The responses in question are highlighted.","Q301_BadMessageNonNumeric":"Please enter only positive numbers.<br />The responses in question are highlighted."};
+		
+    </script>
+    <!--BeginMasterHeadPCCode -->
+    <!--EndMasterHeadPCCode -->
+    <script src="/hwkq/js/scriptsPC?v="></script>
+
+    
+    <!-- BeginTaggedPageHeadCode -->
+    
+    <!-- EndTaggedPageHeadCode -->
+
+</head>
+<body>
+    <a id="skipToMainContent" class="sr-only sr-only-focusable" href="#mainContent">Skip to main content</a>
+    <div id="surveyContent" class="panel panel-default" >
+        <div class="panel-heading"></div>
+        <div class="panel-body main-content" id="mainContent" role="main">
+            <h1 class="sr-only">Please Update Your Profile</h1>
+            <ul id="badMessageContainer">
+            </ul>
+<form action="/hwkq/q301/PagePost" class="" method="post" name="q301" novalidate="novalidate">
+
+
+		<div class="st-question-container" style="display:none;" st-name="Q301" st-surveyquestiontype="Numeric" st-surveyquestiondisplaytype="DEFAULT" st-value="5:100" ></div>
+
+<div id="SurveyPageContent" data-questionorder="0" data-randomizequestions="False">
+	<div class="QuestionContainer" id="0" >
+		<!-- Begin HTML For Q301 -->
+		<div class="question-text " ondblclick="">
+			Approximately how many painting jobs does your company complete each year?
+		</div>
+		<div grouptype="response">
+			<div class="group-header"></div>
+			<span class="indented-control"></span>
+			<input type="text" 
+				   id="Q301" 
+				   name="Q301"
+				   value="" 
+				   maxlength="3" 
+				   size="3" 
+				   texttype="numeric" 
+				   questionname="Q301"
+				   aria-label="Q301"/>
+			<span></span>
+		</div>
+		<!-- End HTML For Q301 -->
+	</div>
+</div>
+                    <button type="submit"
+                            id="btnNext"
+                            class="pull-right"
+                            style=""
+                            aria-label="Next Arrow"></button>
+</form>        </div>
+        <div class="page-footer " role="contentinfo">
+                <p class="small ">Please email us at <a href=mailto:swadvisoryboard@gongos.com> swadvisoryboard@gongos.com</a></p>
+            <div class="small privacy-policy">
+                <a href="https://gongos.com/privacy-policy/" target="_blank">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+            <script type="text/javascript">
+        if (typeof dtrum != "undefined")
+        {
+            dtrum.identifyUser('InstinctSurveyTracking:hwkq:16187:0:10000172');
+        }
+    </script>
+    
+    </body>
+</html>
+
+

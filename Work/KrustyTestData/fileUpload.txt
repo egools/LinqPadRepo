@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <base href="http://localhost:64513/" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Question</title>
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/favicon-20x20.png" rel="icon" type="image/png" sizes="20x20" />
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/min/pc.css" rel="stylesheet" />
+    <link href="/Content/overrides.css" rel="stylesheet"/>
+<link href="/Content/overridesPC.css" rel="stylesheet"/>
+
+
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/modernizr.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/jquery.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/mediaupload.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/js/air-datepicker/air-datepicker.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/utilities.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/global.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+        var JSResources = {"FileUploadQ_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","FileUploadQ_BadMessageRequiredNumberOfFilesValue":"Please upload -1 files to continue","FileUploadQ_BadMessageRequiredNumberOfFilesRange":"Please upload between {0} and {1} files to continue"};
+        
+    </script>
+
+    <!--BeginMasterHeadPCCode -->
+    <!--EndMasterHeadPCCode -->
+    <script src="/Scripts/overrides.js"></script>
+<script src="/Scripts/overridesPC.js"></script>
+
+    
+    <!-- BeginTaggedPageHeadCode -->
+    
+    <!-- EndTaggedPageHeadCode -->
+
+</head>
+<body>
+    <header>
+        <div class="header-grid">
+            <h1 class="sr-only">CarlosTest_DontDelete</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-grid">
+            <div class="survey__page">
+
+                
+
+<form action="/fileuploadq/PagePost" class="" method="post" name="fileuploadq" novalidate="novalidate">
+
+
+
+<div class="question__list" role="list">
+    
+    		<!-- Begin HTML For FileUploadQ -->
+		<section class="question__list-item" role="listitem" data-name="FileUploadQ" st-name="FileUploadQ" st-surveyquestiontype="Verbatim" st-surveyquestiondisplaytype="MEDIAUPLOAD">
+		
+		    <h2>
+		        Upload your video:
+		        <br><span role="doc-subtitle"></span>
+		    </h2>
+		
+
+		
+		    <fieldset class="form-media-upload__group">
+		        <div class="form-media-upload mediaupload-container"
+		             data-label="FileUploadQ"
+		             data-requirednumberoffiles="-1"
+		             data-filetypesallowed="dxf,bmp,btif,sub,ras,cgm,cmx,uvi,djvu,dwg,mmr,rlc,xif,fst,fbs,fpx,npx,fh,g3,gif,ico,ief,jpg,jpeg,mdi,ktx,pcx,psd,pic,pnm,pbm,pgm,png,ppm,svg,rgb,tiff,wbmp,webp,xbm,xpm,xwd"
+		             data-maxfilesizeallowed="20971520"
+		             data-languageid="9"
+		             data-endpoint="/MediaUploaderHandler.ashx?q=c0M1Q2xnZjJyd2RZOGs1SEo1WiUyZnE0Vkc5UlJnSDk2WnFLNW1xNHNSanNTVHkxdGc2MU8zdmUwTzNKJTJiMCUyYndmbTd4cjNPSzhWSG40UVgzM2lzOEN6aU5EdEt5bHg3T25vbERoVVlFJTJiRjFpQnMySSUyZjZId3lkV3Rod1Y4MDR4SXBWNWsyUG9qeDgwRTFkS0IzbXhkczltWkdKN1pVd0l1UjNjbWRPWWJwaXg2JTJia25pJTJmMGlmZll4MGxhV3BXcGlUMlZHaiUyYmM0SkhqdDdQdnNXWUUwUWU5a1lyV2l5JTJiUlV1VjdNU0JwNmV1dnUzMEk0d01sV2UwVklwU0U4VjllWGFOTXdsZW9vajJmcmxGODVuaERxYmRjSFU1OTBJRXozT2pxd2REMWlJb0NFWm8lM2Q=">
+		
+		            
+		
+		            <div class="form-media-upload__wrapper mediaupload-dropzone">
+		                <input class="form-media-upload__input" type="file" name="FileUploadQ" multiple>
+		                <div class="form-media-upload__content">
+		                    <div class="content-image">
+		                        <img src="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/upload-icon.svg" alt="Upload Icon">
+		                    </div>
+		                    <p class="primary__text">
+		                        #DROPFILESHERE# <span>#CHOSEFILE#</span>
+		                    </p>
+		                    <p class="secondary__text">
+		                        #SUPPORTEDFORMATS# #FORMATS#
+		                    </p>
+		                </div>
+		            </div>
+		
+		            <div class="form-media-upload__status-file">
+		                <ul class="files">
+		                </ul>
+		            </div>
+		        </div>
+		    </fieldset>
+		</section>
+		<!-- End HTML For FileUploadQ -->
+
+</div>
+
+
+        <div class="question__button-container">
+            
+            <button id="btnNext"
+                    class="button next"
+                    style=""
+                    type="submit">
+                Next 
+                <span class="arrow"></span>
+            </button>
+        </div>
+</form>            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/logo.svg"
+                 width="320"
+                 height="52"
+                 alt="Footer Logo of Gongos"
+                 title="Gongos">
+        </div>
+        <div class="footer-grid">
+            <nav class="footer__menu">
+                <a href="https://www.google.com/terms" role="link" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+                <a href="https://gongos.com/privacy-policy/" role="link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                <a href="https://www.google.com/about" role="link" target="_blank" rel="noopener noreferrer">About us</a>
+                <a href="https://www.google.com/support" role="link" target="_blank" rel="noopener noreferrer">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    
+    
+        <script type="text/javascript">
+        if (typeof dtrum != "undefined")
+        {
+            dtrum.identifyUser('InstinctBetaSurveyTracking:oysn:12007:0:10000277');
+        }
+    </script>
+
+    
+    
+
+    
+    
+				<script type="text/javascript">
+					utilities.mediaupload.init();
+				</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

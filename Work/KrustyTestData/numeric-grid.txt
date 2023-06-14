@@ -1,0 +1,275 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <base href="https://sbeta.gongos.com/oysn/" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Question</title>
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/favicon-20x20.png" rel="icon" type="image/png" sizes="20x20" />
+    <link href="https://cdnbeta.gongos.com/Surveys/v2.0/min/pc.css" rel="stylesheet" />
+    <link href="/oysn/content/pc?v=" rel="stylesheet"/>
+
+
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/modernizr.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/jquery.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/mediaupload.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/js/air-datepicker/air-datepicker.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/utilities.min.js"></script>
+    <script src="https://cdnbeta.gongos.com/Surveys/v2.0/min/global.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+        var JSResources = {"NumericGridQsA_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","NumericGridQsA_BadMessageNonNumeric":"Please enter only positive numbers.<br />You will find the questions with errors below.","NumericGridQsA_BadMessageConstantSum":"Your responses must total -1.","NumericGridQsA_BadMessageMissingOther":"You must enter a response in the Specify box.<br />You will find the questions with errors below.","NumericGridQsA_BadMessageOptOutWarning":"Your answer in the textbox will be cleared.","NumericGridQsB_BadMessageNoAnswer":"All responses are required.<br />You will find the questions with errors below.","NumericGridQsB_BadMessageNonNumeric":"Please enter only positive numbers.<br />You will find the questions with errors below.","NumericGridQsB_BadMessageOptOutWarning":"Your answer in the textbox will be cleared."};
+        
+    </script>
+
+    <!--BeginMasterHeadPCCode -->
+    <!--EndMasterHeadPCCode -->
+    <script src="/oysn/js/scriptsPC?v="></script>
+
+    
+    <!-- BeginTaggedPageHeadCode -->
+    
+    <!-- EndTaggedPageHeadCode -->
+
+</head>
+<body>
+    <header>
+        <div class="header-grid">
+            <h1 class="sr-only">CarlosTest_DontDelete</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-grid">
+            <div class="survey__page">
+
+                
+
+<form action="/oysn/numericgridqs/PagePost" class="" method="post" name="numericgridqs" novalidate="novalidate">
+
+
+
+<div class="question__list" role="list">
+    
+    		<!-- Begin HTML For NumericGridQsA -->
+		<section class="question__list-item" role="listitem" data-name="NumericGridQsA" st-name="NumericGridQsA" st-surveyquestiontype="GridNumeric" st-surveyquestiondisplaytype="DEFAULT">
+		    <h2 id="NumericGridQsAQuestionText"
+		        role="heading"
+		        ondblclick="">
+		        Numeric Grid
+		        <br><span role="doc-subtitle"></span>
+		    </h2>
+		    <div class="response-groups">
+		        
+		        <div class="statement multiple">
+		                    <fieldset class="form-textgrid__group" style="grid-template-columns: 20% 1fr">
+		                        <label class="statement-title">
+		                            Statement 1
+		                        </label>
+		                        <div class="form-input-number__group">
+		                            <div class="form-input-number__wrapper">
+		                                
+		                                <label class="form-input-number__label"
+		                                       for="NumericGridQsA_1">Numeric Grid</label>
+		                                    <input id="NumericGridQsA_1"
+		                                           name="NumericGridQsA_1"
+		                                           value=""
+		                                           class="form-input-number__input"
+		                                           type="text"
+		                                           maxlength="5"
+		                                           oninput="this.value=this.value.slice(0,10)"
+		                                           size="5"
+		                                           questionname="NumericGridQsA"
+		                                   			data-texttype="default"/>
+		                                    
+		                                </div>
+		                            </div>
+		                        </fieldset>
+		                    <fieldset class="form-textgrid__group" style="grid-template-columns: 20% 1fr">
+		                        <label class="statement-title">
+		                            Statement 2
+		                        </label>
+		                        <div class="form-input-number__group">
+		                            <div class="form-input-number__wrapper">
+		                                
+		                                <label class="form-input-number__label"
+		                                       for="NumericGridQsA_2">Numeric Grid</label>
+		                                    <input id="NumericGridQsA_2"
+		                                           name="NumericGridQsA_2"
+		                                           value=""
+		                                           class="form-input-number__input"
+		                                           type="text"
+		                                           maxlength="5"
+		                                           oninput="this.value=this.value.slice(0,10)"
+		                                           size="5"
+		                                           questionname="NumericGridQsA"
+												   data-texttype="default"/>
+		                                    
+		                                </div>
+		                            </div>
+		                        </fieldset>
+		                    <fieldset class="form-textgrid__group" style="grid-template-columns: 20% 1fr">
+		                        <label class="statement-title">
+		                            Statement 3
+		                        </label>
+		                        <div class="form-input-number__group">
+		                            <div class="form-input-number__wrapper">
+		                                
+		                                <label class="form-input-number__label"
+		                                       for="NumericGridQsA_3">Numeric Grid</label>
+		                                    <input id="NumericGridQsA_3"
+		                                           name="NumericGridQsA_3"
+		                                           value=""
+		                                           class="form-input-number__input"
+		                                           type="text"
+		                                           maxlength="5"
+		                                           oninput="this.value=this.value.slice(0,10)"
+		                                           size="5"
+		                                           questionname="NumericGridQsA"
+												   data-texttype="default"/>
+		                                    
+		                                </div>
+		                            </div>
+		                        </fieldset>
+		                    <fieldset class="form-textgrid__group" style="grid-template-columns: 20% 1fr">
+		                        <label class="statement-title">
+		                            Statement 4
+		                        </label>
+		                        <div class="form-input-number__group">
+		                            <div class="form-input-number__wrapper">
+		                                
+		                                <label class="form-input-number__label"
+		                                       for="NumericGridQsA_4">Numeric Grid</label>
+		                                    <input id="NumericGridQsA_4"
+		                                           name="NumericGridQsA_4"
+		                                           value=""
+		                                           class="form-input-number__input"
+		                                           type="text"
+		                                           maxlength="5"
+		                                           oninput="this.value=this.value.slice(0,10)"
+		                                           size="5"
+		                                           questionname="NumericGridQsA"
+												   data-texttype="number"/>
+		                                    
+		                                </div>
+		                            </div>
+		                        </fieldset>
+		        </div>
+		    </div>
+		        <div class="form-checkbox-button__group margin-top">
+		            <label for="NumericGridQsAOptOut" class="form-checkbox-button__checkbox only-one">
+		                <input type="checkbox"
+		                       id="NumericGridQsAOptOut"
+		                       name="NumericGridQsAOptOut"
+		                       data-targets="NumericGridQsA_1,NumericGridQsA_2,NumericGridQsA_3,NumericGridQsA_4"
+		                       data-question="NumericGridQsA"
+		                       value="1">
+		                <span class="checkbox__label">
+		                    I don&#39;t know
+		                </span>
+		                <span class="checkbox__checkmark"
+		                      role="checkbox"></span>
+		            </label>
+		        </div>
+		</section>
+		<!-- End HTML For NumericGridQsA -->
+		<!-- Begin HTML For NumericGridQsB -->
+		<section class="question__list-item" role="listitem" data-name="NumericGridQsB" st-name="NumericGridQsB" st-surveyquestiontype="Numeric" st-surveyquestiondisplaytype="DEFAULT">
+		
+		    <h2>
+		        Numeric Q
+		        <br><span role="doc-subtitle"></span>
+		    </h2>
+		
+		    <div class="form-input-number__group">
+		        
+		        <div class="form-input-number__wrapper">
+		            
+		            <label class="form-input-number__label"
+		                   for="NumericGridQsB">Numeric Q</label>
+		            <input id="NumericGridQsB"
+		                   name="NumericGridQsB"
+		                   value=""
+		                   class="form-input-number__input"
+		                   type="number"
+		                   maxlength="10"
+		                   oninput="this.value=this.value.slice(0,10)"
+		                   size="5"
+		                   questionname="NumericGridQsB"
+						   data-texttype="numeric"/>
+		            
+		        </div>
+		    </div>
+		
+		
+		</section>
+		<!-- End HTML For NumericGridQsB -->
+
+</div>
+
+
+        <div class="question__button-container">
+            
+            <button id="btnNext"
+                    class="button next"
+                    style=""
+                    type="submit">
+                Next 
+                <span class="arrow"></span>
+            </button>
+        </div>
+</form>            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="https://cdnbeta.gongos.com/Surveys/v2.0/style/images/logo.svg"
+                 width="320"
+                 height="52"
+                 alt="Footer Logo of Gongos"
+                 title="Gongos">
+        </div>
+        <div class="footer-grid">
+            <nav class="footer__menu">
+                <a href="https://www.google.com/terms" role="link" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+                <a href="https://gongos.com/privacy-policy/" role="link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                <a href="https://www.google.com/about" role="link" target="_blank" rel="noopener noreferrer">About us</a>
+                <a href="https://www.google.com/support" role="link" target="_blank" rel="noopener noreferrer">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    
+    
+        <script type="text/javascript">
+        if (typeof dtrum != "undefined")
+        {
+            dtrum.identifyUser('InstinctBetaSurveyTracking:oysn:12007:0:10000388');
+        }
+    </script>
+
+    
+    
+
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
