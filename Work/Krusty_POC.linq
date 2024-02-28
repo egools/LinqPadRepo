@@ -1,45 +1,257 @@
 <Query Kind="Program">
+  <NuGetReference>Flurl</NuGetReference>
+  <NuGetReference>Flurl.Http</NuGetReference>
   <NuGetReference>HtmlAgilityPack</NuGetReference>
   <NuGetReference>MathNet.Numerics</NuGetReference>
+  <Namespace>Flurl</Namespace>
   <Namespace>HtmlAgilityPack</Namespace>
   <Namespace>MathNet.Numerics.Distributions</Namespace>
+  <Namespace>System.Web</Namespace>
+  <Namespace>Flurl.Http</Namespace>
+  <Namespace>System.Net</Namespace>
+  <Namespace>System.Threading.Tasks</Namespace>
+  <Namespace>System.Globalization</Namespace>
 </Query>
 
-void Main()
+async Task Main()
 {
-	var responseBody = File.ReadAllText(
-		Path.Combine(
-			Path.GetDirectoryName(Util.CurrentQueryPath),
-			@"KrustyTestData\numeric-grid.txt"
-			//@"KrustyTestData\num-slider.txt"
-			//@"KrustyTestData\rating-slider.txt"
-			));
-	var htmlDoc = new HtmlDocument();
-	htmlDoc.LoadHtml(responseBody);
-	var formData = GetFormData(htmlDoc);
+	var request = new SurveyTakerRespondentRequest
+	{
+		SurveyID = 12410,
+		SurveyUrl = "https://surveybeta.square-panel.com/yfkg?s=f52e&IgnoreIP=1",
+		PID = Guid.NewGuid().ToString()
+	};
+	var surveyBaseUrl = new Url(request.SurveyUrl).RemoveQuery();
+
+	using (var httpClient = new FlurlClient(surveyBaseUrl)
+				.WithAutoRedirect(false)
+				.WithTimeout(300)
+				.WithHeader("Pragma", "no-cache")
+				.WithHeader("Content-type", "application/x-www-form-urlencoded")
+				.WithHeader("User-agent", "Gongos Survey Checker"))
+	{
+		var result = await RunSurveyTakerRespondentAsync(request, httpClient, new CancellationToken());
+	}	
 }
 
-public string GetFormData(HtmlDocument htmlDoc)
+public const int maxRedundantFormActions = 10;
+public const int maxPages = 500;
+
+public async Task<SurveyTakerRespondentResult> RunSurveyTakerRespondentAsync(SurveyTakerRespondentRequest request, FlurlClient httpClient, CancellationToken cancellationToken)
 {
-	var questions = htmlDoc.DocumentNode
-				.Descendants()
-				.Where(n => n.NodeType == HtmlNodeType.Element)
-				.Select(n =>
+	#region Validations
+
+	if (string.IsNullOrEmpty(request.SurveyUrl))
+		return new SurveyTakerRespondentResult();
+
+	#endregion
+
+	var myFormActions = new List<string>();
+	var uniqueFormActions = new List<string>();
+	var logs = new List<string>();
+	var stopwatch = new Stopwatch();
+
+	bool foundEnd = false, successful = true, hasCompleted = false;
+	string responseBody = string.Empty, formAction = string.Empty, previousFormAction = string.Empty;
+
+	try
+	{
+		logs.Add("Starting");
+		stopwatch.Start();
+
+		var redundantFormActionCount = 0;
+		var totalPageCount = 0;
+		var cookieJar = new CookieJar();
+
+		var httpRequest = httpClient
+			.Request()
+			.SetQueryParam("pid", request.PID.Trim())
+			.SetQueryParam("st", 1)
+			.SetQueryParam("s", new Url(request.SurveyUrl).QueryParams.TryGetFirst("s", out object sampleSource) ? sampleSource : null, NullValueHandling.Remove)
+			.WithCookies(cookieJar);
+
+		cancellationToken.ThrowIfCancellationRequested();
+
+		try
+		{
+			var response = await httpRequest.GetAsync();
+
+			while (foundEnd == false)
+			{
+				while ((HttpStatusCode)response.StatusCode == HttpStatusCode.Found)
 				{
-					SurveyTakerQuestion question = null;
-					if (n.Name.Equals("div", StringComparison.InvariantCultureIgnoreCase) && n.GetAttributeValue("class", string.Empty).Contains("st-question-container"))
-						question = new SurveyTakerQuestionMvc(n, htmlDoc.DocumentNode);
+					if (!response.Headers.TryGetFirst("Location", out string locationHeader))
+						throw new InvalidOperationException();
 
-					if (n.Name.Equals("section", StringComparison.InvariantCultureIgnoreCase) && n.Attributes.Contains("st-name"))
-						question = new SurveyTakerQuestionCore(n, htmlDoc.DocumentNode);
-					return question?.ProcessValueToPost() ?? default;
-				})
-				.ToList();
-	var valuesToPost = questions.Where(vtp => !string.IsNullOrEmpty(vtp))
-		.Select(vtp => vtp)
-		.ToList();
+					Url location = locationHeader;
 
-	return string.Join("&", valuesToPost);
+					// let's remove the survey's key
+					location.PathSegments.RemoveAt(0);
+
+					response = await httpClient
+						.Request()
+						.AppendPathSegments(location.PathSegments)
+						.SetQueryParams(location.QueryParams)
+						.WithCookies(cookieJar)
+						.GetAsync();
+				}
+
+				responseBody = await response.GetStringAsync();
+
+				if (responseBody.IndexOf("thankyou.aspx", StringComparison.OrdinalIgnoreCase) > -1 || responseBody.IndexOf("thankyou/pagepost", StringComparison.OrdinalIgnoreCase) > -1)
+				{
+					logs.Add("Found end page");
+
+					foundEnd = true;
+				}
+
+				if (responseBody.IndexOf("studyclosed.aspx", StringComparison.OrdinalIgnoreCase) > -1)
+				{
+					logs.Add("Found closed page");
+
+					foundEnd = true;
+					successful = false;
+				}
+
+				if (responseBody.IndexOf("error.aspx", StringComparison.OrdinalIgnoreCase) > -1 || responseBody.IndexOf("an error occurred", StringComparison.OrdinalIgnoreCase) > -1)
+				{
+					logs.Add($"Found error page with HTML body: {responseBody.Replace("\t", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty)}");
+
+					foundEnd = true;
+					successful = false;
+				}
+
+				if (!foundEnd && !string.IsNullOrEmpty(responseBody))
+				{
+					var htmlDoc = new HtmlDocument();
+					htmlDoc.LoadHtml(responseBody);
+					var formNode = htmlDoc.DocumentNode.SelectSingleNode("//form");
+					Url location = HttpUtility.HtmlDecode(formNode.Attributes["action"].Value);
+
+					// let's remove the survey's key
+					location.PathSegments.RemoveAt(0);
+
+					formAction = location;
+
+					if (!uniqueFormActions.Contains(formAction))
+					{
+						uniqueFormActions.Add(formAction);
+					}
+
+					if (!myFormActions.Contains(formAction))
+					{
+						myFormActions.Add(formAction);
+					}
+
+					var formData = GetFormData(htmlDoc);
+
+					response = await httpClient
+							.Request()
+							.AppendPathSegments(location.PathSegments)
+							.SetQueryParams(location.QueryParams)
+							.WithCookies(cookieJar)
+							.PostStringAsync(formData);
+
+					logs.Add($"Page: {formAction} with post: {formData}");
+				}
+
+				if (formAction == previousFormAction) { redundantFormActionCount += 1; totalPageCount--; }
+				else { redundantFormActionCount = 0; previousFormAction = formAction; }
+
+				if (redundantFormActionCount >= maxRedundantFormActions)
+				{
+					logs.Add($"Redundant Form Action: {formAction}");
+
+					foundEnd = true;
+					successful = false;
+				}
+
+				totalPageCount++;
+				if (totalPageCount >= maxPages)
+				{
+					logs.Add($"More than {maxPages} pages!");
+
+					foundEnd = true;
+				}
+			}
+		}
+		catch (FlurlHttpException ex)
+		{
+			responseBody = await ex.GetResponseStringAsync() ?? ex.Message;
+
+			logs.Add($"Web Response Error: {ex.Message} with HTML body: {responseBody.Replace("\t", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty)}");
+
+			foundEnd = true;
+			successful = false;
+		}
+		finally
+		{
+			//var sqlParameters = new DynamicParameters();
+			//sqlParameters.Add("PID", request.PID.Trim());
+
+			hasCompleted = foundEnd; //&& await surveyDatabaseManager
+				//.GetRespondentCountAsync(request.SurveyID, $"IsSurveyTaker = 1 AND Status = 5 AND PID = @PID", sqlParameters) > 0;
+			logs.Dump();
+		}
+	}
+	catch (OperationCanceledException)
+	{
+		throw;
+	}
+	catch (Exception ex)
+	{
+		logs.Add($"Found error: {ex.Message.Replace("\n", string.Empty).Replace("\r", string.Empty)} with source: {responseBody.Replace("\t", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty)}");
+		successful = false;
+	}
+
+	stopwatch.Stop();
+
+	return new SurveyTakerRespondentResult
+	{
+		EllapsedMilliseconds = stopwatch.ElapsedMilliseconds,
+		HasCompleted = hasCompleted,
+		Successful = successful,
+		Logs = logs
+	};
+
+	string GetFormData(HtmlDocument htmlDoc)
+	{
+		var descendants = htmlDoc.DocumentNode.Descendants();
+
+		var valuesToPost = descendants
+			.Where(n => n.NodeType == HtmlNodeType.Element)
+			.Select(n =>
+			{
+				SurveyTakerQuestion question = null;
+
+				if (n.Name.Equals("div", StringComparison.InvariantCultureIgnoreCase) && n.GetAttributeValue("class", string.Empty).Contains("st-question-container"))
+					question = new SurveyTakerQuestionMvc(n, htmlDoc.DocumentNode);
+
+				if (n.Name.Equals("section", StringComparison.InvariantCultureIgnoreCase) && n.Attributes.Contains("st-name"))
+					question = new SurveyTakerQuestionCore(n, htmlDoc.DocumentNode);
+				return question?.ProcessValueToPost() ?? default;
+			})
+			.Where(vtp => !string.IsNullOrEmpty(vtp))
+			.Select(vtp => vtp)
+			.ToList();
+
+		return string.Join("&", valuesToPost);
+	}
+}
+
+public class SurveyTakerRespondentResult
+{
+	public List<string> Logs { get; set; } = new List<string>();
+	public bool HasCompleted { get; set; }
+	public bool Successful { get; set; }
+	public long EllapsedMilliseconds { get; set; }
+}
+
+public class SurveyTakerRespondentRequest
+{
+	public string PID { get; set; }
+	public string SurveyUrl { get; set; }
+	public int SurveyID { get; internal set; }
 }
 
 public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
@@ -62,11 +274,11 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 				if (input.GetAttributeValue("type", string.Empty) == "range")
 				{
 					return elements.FirstOrDefault(e => e.Id == input.GetAttributeValue("data-ticksid", null))
-							   ?.Descendants("div")
-							   .Where(n => n.HasClass("form-range__tick"))
-							   .Select(option => new SurveyTakerSliderResponseCore(input, option))
-							   .ToList<SurveyTakerResponse>()
-							   ?? new List<SurveyTakerResponse> { new SurveyTakerSliderResponseCore(input) };
+						?.Descendants("div")
+						.Where(n => n.HasClass("form-range__tick"))
+						.Select(option => new SurveyTakerSliderResponseCore(input, option))
+						.ToList<SurveyTakerResponse>()
+						?? new List<SurveyTakerResponse> { new SurveyTakerSliderResponseCore(input) };
 				}
 				else
 					return new List<SurveyTakerResponse> { new SurveyTakerInputResponseCore(input) };
@@ -83,7 +295,6 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 		SurveyTakerResponses.AddRange(elements
 			.Where(n => n.Name == "textarea")
 			.Select(textarea => new SurveyTakerTextareaResponseCore(textarea)));
-		SurveyTakerResponses.Dump();
 	}
 
 	public override string ProcessValueToPost()
@@ -139,7 +350,6 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 							switch (SurveyQuestionType)
 							{
 								case SurveyQuestionType.GridCheckOne:
-								case SurveyQuestionType.Ranking:
 									{
 										radio_dropdown_GridCheckOne();
 										break;
@@ -198,14 +408,33 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 							{
 								toPost.Add(EscapeValueToPost(Name, StopCode));
 							}
-							else if (SurveyQuestionType == SurveyQuestionType.Ranking)
+							else if (SurveyQuestionDisplayType == SurveyQuestionDisplayType.RANKING || SurveyQuestionDisplayType == SurveyQuestionDisplayType.RANKSORT)
 							{
 								toPost.AddRange(Enumerable.Zip(
-								first: ShuffleCollection(thisGroupedValidSurveyTakerResponses),
-								second: thisGroupedValidSurveyTakerResponses.FirstOrDefault().KrustyValue.Split(",", StringSplitOptions.RemoveEmptyEntries),
-								resultSelector: (first, second) => (DataPointName: first.DataPointName, Value: second))
+									first: ShuffleCollection(thisGroupedValidSurveyTakerResponses),
+									second: thisGroupedValidSurveyTakerResponses.First().KrustyValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries),
+									resultSelector: (first, second) => (DataPointName: first.DataPointName, Value: second))
 								.OrderBy(r => r.DataPointName)
 								.Select(r => EscapeValueToPost(r.DataPointName, r.Value)));
+							}
+							else if(SurveyQuestionDisplayType == SurveyQuestionDisplayType.DATEPICKER)
+							{
+								var boundFormat = "yyyy-MM-dd";
+								var minSet = DateTime.TryParseExact(DateMin, boundFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var min);
+								var maxSet = DateTime.TryParseExact(DateMax, boundFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var max);
+
+								if (!minSet)
+								{
+									min = (max != DateTime.MinValue ? max : DateTime.UtcNow).AddYears(-1);
+								}
+								if (!maxSet)
+								{
+									max = (min != DateTime.MinValue ? min : DateTime.UtcNow).AddYears(1);
+								}
+
+								var randDays = ZenRandom.Next(0, (max - min).Days + 1);
+								var randDate = min.AddDays(randDays);
+								toPost.Add(EscapeValueToPost(Name, randDate.ToString(DateFormat)));
 							}
 							else
 							{
@@ -216,8 +445,8 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 							return toPost;
 						}
 					case "text":
-					case "number":
 					case "range":
+					case "number":
 						{
 							var toPost = new List<string>();
 							var otherSurveyTakerResponse = thisGroupedValidSurveyTakerResponses.FirstOrDefault(vstr => vstr.DataPointName.IndexOf("other", StringComparison.OrdinalIgnoreCase) > -1);
@@ -297,7 +526,7 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 							return thisGroupedValidSurveyTakerResponses
 									.Select(vstr =>
 									{
-										var fakeResponse = string.Join(',', Enumerable.Range(1, RequiredNumberOfFiles).Select(i => $"ST_{i}.txt"));
+										var fakeResponse = string.Join(",", Enumerable.Range(1, RequiredNumberOfFiles).Select(i => $"ST_{i}.txt"));
 										return EscapeValueToPost(vstr.DataPointName, fakeResponse);
 									})
 									.ToList();
@@ -318,7 +547,6 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 			.ToList();
 
 		#endregion
-		valuesToPost.Dump();
 		return string.Join("&", valuesToPost);
 	}
 }
@@ -415,11 +643,6 @@ public sealed class SurveyTakerQuestionMvc : SurveyTakerQuestion
 											.Select(gp => SurveyTakerResponseRandomizer(gp.ToList()))
 											.ToList());
 
-										break;
-									}
-								case SurveyQuestionType.Ranking:
-									{
-										selectedSurveyTakerResponses.AddRange(SurveyTakerExclusiveStatementsRandomizer(thisGroupedValidSurveyTakerResponses));
 										break;
 									}
 								default:
@@ -550,7 +773,7 @@ public sealed class SurveyTakerQuestionMvc : SurveyTakerQuestion
 
 public abstract class SurveyTakerQuestion
 {
-	protected List<SurveyTakerResponse> SurveyTakerResponses { get; set; }
+	public List<SurveyTakerResponse> SurveyTakerResponses { get; set; }
 
 	public SurveyTakerQuestion(HtmlNode questionNode, HtmlNode documentNode)
 	{
@@ -569,6 +792,9 @@ public abstract class SurveyTakerQuestion
 		NumericMin = double.TryParse(questionNode.GetAttributeValue("st-numericmin", string.Empty), out double numericMin) ? numericMin : default;
 		NumericMax = double.TryParse(questionNode.GetAttributeValue("st-numericmax", string.Empty), out double numericMax) ? numericMax : int.MaxValue - 1;
 		RequiredNumberOfFiles = int.TryParse(questionNode.GetAttributeValue("st-requirednumberoffiles", string.Empty), out int requiredNumberOfFiles) ? requiredNumberOfFiles : 1;
+		DateMin = questionNode.GetAttributeValue("st-datemin", string.Empty);
+		DateMax = questionNode.GetAttributeValue("st-datemax", string.Empty);
+		DateFormat = questionNode.GetAttributeValue("st-dateformat", "MM/dd/yyyy");
 
 		BuildResponses(questionNode, documentNode);
 	}
@@ -588,6 +814,10 @@ public abstract class SurveyTakerQuestion
 	public bool MakeResponsesExclusive { get; set; }
 	public string MinMaxValues => NumericMin.HasValue || NumericMax.HasValue ? $"{NumericMin}:{NumericMax}" : string.Empty;
 	public int RequiredNumberOfFiles { get; set; }
+	public string DateMin {get; set;}
+	public string DateMax {get; set;}
+	public string DateFormat {get; set;}
+	
 
 	public abstract string ProcessValueToPost();
 
@@ -946,7 +1176,7 @@ public abstract class SurveyTakerQuestion
 	{
 		// Krusty Value/NotValue works as a value "picker"
 
-		foreach (var thisGroupedValidSurveyTakerResponses in allValidSurveyTakerResponses.Where(vstr => vstr.Type != "checkbox").GroupBy(vstr => vstr.DataPointName))
+		foreach (var thisGroupedValidSurveyTakerResponses in allValidSurveyTakerResponses.GroupBy(vstr => vstr.DataPointName))
 		{
 			var thisStatementKrustyValues = thisGroupedValidSurveyTakerResponses.First().KrustyValue;
 			var thisStatementKrustyNotValues = thisGroupedValidSurveyTakerResponses.First().KrustyNotValue;
@@ -1065,7 +1295,6 @@ public sealed class SurveyTakerDropdownResponseMvc : SurveyTakerResponseMvc
 		NameIndex = optionHtmlNode.Attributes["nameindex"]?.Value ?? string.Empty;
 		Value = optionHtmlNode.Attributes["value"]?.Value ?? string.Empty;
 		EligibilityType = Enum.TryParse(optionHtmlNode.GetAttributeValue("st-eligibilitytype", string.Empty), true, out SurveyTakerResponseEligibilityType surveyTakerResponseEligibilityType) ? surveyTakerResponseEligibilityType : SurveyTakerResponseEligibilityType.NotSet;
-
 		Type = "dropdown";
 	}
 }
@@ -1127,4 +1356,48 @@ public enum SurveyTakerResponseTextType
 	Numeric,
 	Decimal,
 	AlphaNumeric
+}
+
+public class SurveyTakerJobData
+{
+	public int EnvironmentID { get; set; }
+
+	// The naming was kept this way to have backwards compatibility.
+	public int Status { get; set; }
+
+	public SurveyTakerJobStatus SurveyTakerJobStatus
+	{
+		get => (SurveyTakerJobStatus)Status;
+		set => Status = (int)value;
+	}
+
+	public int CompletedRuns { get; set; }
+
+	public int CurrentCompletes { get; set; }
+
+	public int ExpectedCompletes { get; set; }
+
+	public int SecondsRemaining { get; set; }
+
+	public int SurveyID { get; set; }
+
+	public string SurveyUrl { get; set; }
+
+	public string SurveySampleSourceName { get; set; }
+
+	public string Message { get; set; }
+
+	public int DataPlanID { get; set; }
+
+	public string HangfireJobID { get; set; }
+}
+
+public enum SurveyTakerJobStatus
+{
+	NotSet = 0,
+	Pending = 1,
+	Processing = 2,
+	Failed = 3,
+	Killed = 4,
+	Complete = 5
 }
