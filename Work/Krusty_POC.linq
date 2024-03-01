@@ -31,7 +31,7 @@ async Task Main()
 				.WithHeader("User-agent", "Gongos Survey Checker"))
 	{
 		var result = await RunSurveyTakerRespondentAsync(request, httpClient, new CancellationToken());
-	}	
+	}
 }
 
 public const int maxRedundantFormActions = 10;
@@ -190,7 +190,7 @@ public async Task<SurveyTakerRespondentResult> RunSurveyTakerRespondentAsync(Sur
 			//sqlParameters.Add("PID", request.PID.Trim());
 
 			hasCompleted = foundEnd; //&& await surveyDatabaseManager
-				//.GetRespondentCountAsync(request.SurveyID, $"IsSurveyTaker = 1 AND Status = 5 AND PID = @PID", sqlParameters) > 0;
+									 //.GetRespondentCountAsync(request.SurveyID, $"IsSurveyTaker = 1 AND Status = 5 AND PID = @PID", sqlParameters) > 0;
 			logs.Dump();
 		}
 	}
@@ -229,6 +229,7 @@ public async Task<SurveyTakerRespondentResult> RunSurveyTakerRespondentAsync(Sur
 
 				if (n.Name.Equals("section", StringComparison.InvariantCultureIgnoreCase) && n.Attributes.Contains("st-name"))
 					question = new SurveyTakerQuestionCore(n, htmlDoc.DocumentNode);
+				question?.SurveyTakerResponses.Dump();
 				return question?.ProcessValueToPost() ?? default;
 			})
 			.Where(vtp => !string.IsNullOrEmpty(vtp))
@@ -266,6 +267,15 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 		var elements = questionNode
 				.Descendants()
 				.Where(n => n.NodeType == HtmlNodeType.Element);
+
+		if (SurveyQuestionDisplayType == SurveyQuestionDisplayType.PRICESENSITIVITY)
+		{
+			SurveyTakerResponses.AddRange(elements.FirstOrDefault(e => e.HasClass("price-sensitivity-meter"))?
+			.Descendants()
+			.Where(e => e.HasClass("tick-container"))
+			.Select(tick => new SurveyTakerPriceSensitvityResponseCore(tick))
+			.ToList<SurveyTakerResponse>());
+		}
 
 		SurveyTakerResponses.AddRange(elements
 			.Where(n => n.Name == "input")
@@ -307,7 +317,11 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 		switch (SurveyQuestionType)
 		{
 			case SurveyQuestionType.CheckOne: ProcessKrustyValueNotValue_CheckOne(ref allValidSurveyTakerResponses); break;
-			case SurveyQuestionType.GridCheckOne: ProcessKrustyValueNotValue_GridCheckOne(ref allValidSurveyTakerResponses); break;
+			case SurveyQuestionType.GridCheckOne:
+				{
+					if (SurveyQuestionDisplayType != SurveyQuestionDisplayType.RANKSORT) ProcessKrustyValueNotValue_GridCheckOne(ref allValidSurveyTakerResponses);
+					break;
+				}
 			case SurveyQuestionType.Numeric:
 				{
 					switch (SurveyQuestionDisplayType)
@@ -323,6 +337,7 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 					switch (SurveyQuestionDisplayType)
 					{
 						case SurveyQuestionDisplayType.BUTTONRATING: ProcessKrustyValueNotValue_GridCheckOne(ref allValidSurveyTakerResponses); break;
+						case SurveyQuestionDisplayType.PRICESENSITIVITY: break;
 						default: ProcessKrustyValueNotValue_GridNumeric(ref allValidSurveyTakerResponses); break;
 					}
 
@@ -417,11 +432,11 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 								.OrderBy(r => r.DataPointName)
 								.Select(r => EscapeValueToPost(r.DataPointName, r.Value)));
 							}
-							else if(SurveyQuestionDisplayType == SurveyQuestionDisplayType.DATEPICKER)
+							else if (SurveyQuestionDisplayType == SurveyQuestionDisplayType.DATEPICKER)
 							{
 								var boundFormat = "yyyy-MM-dd";
-								var minSet = DateTime.TryParseExact(DateMin, boundFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var min);
-								var maxSet = DateTime.TryParseExact(DateMax, boundFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var max);
+								var minSet = DateTime.TryParseExact(MinDate, boundFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var min);
+								var maxSet = DateTime.TryParseExact(MaxDate, boundFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var max);
 
 								if (!minSet)
 								{
@@ -537,6 +552,25 @@ public sealed class SurveyTakerQuestionCore : SurveyTakerQuestion
 									.GroupBy(r => r.VirtualGroupName)
 									.Select(gp => SurveyTakerResponseRandomizer(gp.ToList()))
 									.Select(response => EscapeValueToPost(response.VirtualGroupName, response.Value));
+						}
+					case "pricesensitivity":
+						{
+							var priceCount = thisGroupedValidSurveyTakerResponses.Count;
+							var point1 = ZenRandom.Next(0, priceCount);
+							var point2 = ZenRandom.Next(Math.Min(point1 + 1, priceCount), priceCount);
+							var point3 = ZenRandom.Next(Math.Min(point2 + 1, priceCount), priceCount);
+							var point4 = ZenRandom.Next(0, point1);
+							return new List<string>
+							{
+								EscapeValueToPost($"{Name}_1", thisGroupedValidSurveyTakerResponses[point1].Value),
+								EscapeValueToPost($"{Name}_5", thisGroupedValidSurveyTakerResponses[point1].NameIndex),
+								EscapeValueToPost($"{Name}_2", thisGroupedValidSurveyTakerResponses[point1].Value),
+								EscapeValueToPost($"{Name}_6", thisGroupedValidSurveyTakerResponses[point1].NameIndex),
+								EscapeValueToPost($"{Name}_3", thisGroupedValidSurveyTakerResponses[point1].Value),
+								EscapeValueToPost($"{Name}_7", thisGroupedValidSurveyTakerResponses[point1].NameIndex),
+								EscapeValueToPost($"{Name}_4", thisGroupedValidSurveyTakerResponses[point1].Value),
+								EscapeValueToPost($"{Name}_8", thisGroupedValidSurveyTakerResponses[point1].NameIndex)
+							};
 						}
 					default:
 						{
@@ -792,8 +826,8 @@ public abstract class SurveyTakerQuestion
 		NumericMin = double.TryParse(questionNode.GetAttributeValue("st-numericmin", string.Empty), out double numericMin) ? numericMin : default;
 		NumericMax = double.TryParse(questionNode.GetAttributeValue("st-numericmax", string.Empty), out double numericMax) ? numericMax : int.MaxValue - 1;
 		RequiredNumberOfFiles = int.TryParse(questionNode.GetAttributeValue("st-requirednumberoffiles", string.Empty), out int requiredNumberOfFiles) ? requiredNumberOfFiles : 1;
-		DateMin = questionNode.GetAttributeValue("st-datemin", string.Empty);
-		DateMax = questionNode.GetAttributeValue("st-datemax", string.Empty);
+		MinDate = questionNode.GetAttributeValue("st-mindate", string.Empty);
+		MaxDate = questionNode.GetAttributeValue("st-maxdate", string.Empty);
 		DateFormat = questionNode.GetAttributeValue("st-dateformat", "MM/dd/yyyy");
 
 		BuildResponses(questionNode, documentNode);
@@ -814,10 +848,10 @@ public abstract class SurveyTakerQuestion
 	public bool MakeResponsesExclusive { get; set; }
 	public string MinMaxValues => NumericMin.HasValue || NumericMax.HasValue ? $"{NumericMin}:{NumericMax}" : string.Empty;
 	public int RequiredNumberOfFiles { get; set; }
-	public string DateMin {get; set;}
-	public string DateMax {get; set;}
-	public string DateFormat {get; set;}
-	
+	public string MinDate { get; set; }
+	public string MaxDate { get; set; }
+	public string DateFormat { get; set; }
+
 
 	public abstract string ProcessValueToPost();
 
@@ -1340,6 +1374,16 @@ public sealed class SurveyTakerTextareaResponseCore : SurveyTakerResponseCore
 	public SurveyTakerTextareaResponseCore(HtmlNode htmlNode) : base(htmlNode)
 	{
 		Type = "textarea";
+	}
+}
+
+public sealed class SurveyTakerPriceSensitvityResponseCore : SurveyTakerResponseCore
+{
+	public SurveyTakerPriceSensitvityResponseCore(HtmlNode htmlNode) : base(htmlNode)
+	{
+		Type = "pricesensitivity";
+		NameIndex = htmlNode.GetAttributeValue("data-index", string.Empty);
+		Value = htmlNode.GetAttributeValue("data-price", string.Empty);
 	}
 }
 
